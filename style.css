@@ -1,0 +1,84 @@
+/* General */
+:root {
+    /* Colors */
+    --bg-color: #F6F7F9;
+    --accent-color: #101418;
+    --accent-color-hover: #222B33;
+    --text-color: #323744;
+    --heading-color: #0E1115;
+
+    /* Fonts */
+    --text-font: "Onest", sans-serif;
+    --display-font: "Inter", sans-serif;
+    --accent-font: "Instrument Serif", serif;
+
+    /* Border */
+    --rounded-main: 20px;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--text-font);
+    color: var(--bg-color);
+    padding: 3vh 0;
+}
+
+.svg {
+    stroke: var(--bg-color);
+}
+
+
+/* Header */
+
+header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+nav {
+    width: 40%;
+    background-color: var(--accent-color);
+    padding: 1vh 1.5vw;
+    border-radius: 50px;
+}
+
+nav > ul {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.logo {
+    font-family: var(--display-font);
+    text-decoration: none;
+    color: var(--bg-color);
+}
+
+.nav__inner-list {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.nav__inner-list > li:not(:first-child) {
+    margin-left: 1rem;
+}
+
+.nav__inner-list li {
+    padding: 0.3rem 0.6rem;
+    border-radius: var(--rounded-main);
+    transition: all 100ms linear;
+}
+
+.nav__inner-list li:hover {
+    background-color: var(--accent-color-hover);
+}
+
