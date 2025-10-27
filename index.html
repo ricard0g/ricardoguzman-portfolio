@@ -19,7 +19,8 @@
 <body>
     <!-- Header Section -->
     <header>
-        <nav>
+        <!-- Desktop Navbar -->
+        <nav class="nav__desktop-container">
             <ul>
                 <li>
                     <a href="/" class="logo">
@@ -56,6 +57,46 @@
                             <path d="M9 18c-4.51 2-5-2-7-2" />
                         </svg>
                     </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Mobile Navbar -->
+        <nav class="nav-mobile__container">
+            <ul>
+                <li>
+                    <a href="/" class="logo">
+                        <span>RICARDO<sup>®</sup></span>
+                    </a>
+                </li>
+                <li>
+                    <label id="burger-btn" for="menu-toggle">
+                        <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu">
+                            <path d="M4 5h16" />
+                            <path d="M4 12h16" />
+                            <path d="M4 19h16" />
+                        </svg>
+                    </label>
+                    <input type="checkbox" id="menu-toggle">
+
+                    <ul class="nav-mobile__menu">
+                        <li>
+                            <a href="/">
+                                Sobre Mi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/">
+                                Contacto
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
@@ -109,7 +150,8 @@
 
                     <p>Hola 👋</p>
                     <p>
-                        Me gusta mucho aprender 🧠 y leer de tecnología, pero lo que más disfruto es sentarme a crear y ver
+                        Me gusta mucho aprender 🧠 y leer de tecnología, pero lo que más disfruto es sentarme a crear y
+                        ver
                         cómo una idea se convierte en algo real.
                     </p>
                     <p>
@@ -124,7 +166,8 @@
                         en vídeos largos para quien le sirva.
                     </p>
                     <p>
-                        Viviendo en España 🇪🇸 desde los 13, Venezolano 🇻🇪 de nacimiento, con mezcla de arepas y tortilla de patata en el mismo
+                        Viviendo en España 🇪🇸 desde los 13, Venezolano 🇻🇪 de nacimiento, con mezcla de arepas y
+                        tortilla de patata en el mismo
                         menú.
                     </p>
                 </div>
