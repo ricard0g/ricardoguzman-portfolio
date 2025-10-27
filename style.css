@@ -18,9 +18,12 @@
 
     /* Shadows */
     --shadow-m:
-        inset 0px 4px 4px #ffffff40, /* Sombrita arriba simulando luz chocando con el elemento */
-        0px 2px 4px #00000030, /* Sombra mas oscura pegada al elemento para recalcar el levantamiento del elemento */
-        0px 4px 8px #00000015; /* Sombra menos oscura pero con mas blur para extender la distancia de la sombra */
+        inset 0px 4px 4px #ffffff40,
+        /* Sombrita arriba simulando luz chocando con el elemento */
+        0px 2px 4px #00000030,
+        /* Sombra mas oscura pegada al elemento para recalcar el levantamiento del elemento */
+        0px 4px 8px #00000015;
+    /* Sombra menos oscura pero con mas blur para extender la distancia de la sombra */
     --shadow-l:
         inset 0px 4px 4px #ffffff50,
         0px 4px 6px #00000030,
@@ -120,12 +123,12 @@ nav>ul {
 
 .hero__container {
     position: relative;
-    top: 8vh;
+    top: 6vh;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 80vh;
+    height: 70dvh;
 }
 
 .hero__wrapper {
@@ -133,7 +136,7 @@ nav>ul {
     flex-flow: column nowrap;
     justify-content: space-between;
     align-items: center;
-    width: 65%;
+    width: 70%;
     height: 80%;
     padding: 4vh;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -141,7 +144,7 @@ nav>ul {
     background-size: cover;
     background-position: center;
     border-radius: var(--rounded-main);
-    box-shadow: 2px 2px 4px 2px var(--accent-color) ;
+    box-shadow: 2px 2px 4px 2px var(--accent-color);
 }
 
 .hero__corners-container {
@@ -164,29 +167,33 @@ nav>ul {
 
 .hero__content-container {
     display: flex;
-    justify-content: space-around;
+    flex-flow: column nowrap;
+    justify-content: top;
     align-items: center;
     width: 100%;
     height: 100%;
 }
 
+/*
 .hero__content-column {
     display: flex;
     flex-flow: column nowrap;
     justify-content: top;
     height: 100%;
 }
-
+*/
 #content-left {
-    align-content: top;
-    width: 30%;
-    padding-top: 4vh;
+    display: flex;
+    width: 90%;
+    margin-top: 4vh;
+    text-align: left;
 }
 
 #content-right {
-    justify-content: center;
-    align-content: end;
-    width: 40%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+    width: 90%;
     text-align: right;
 }
 
@@ -216,7 +223,7 @@ nav>ul {
 }
 
 .main-heading {
-    font-size: 4.5rem;
+    font-size: 4.75rem;
     font-family: var(--display-font);
     font-weight: 500;
     text-transform: uppercase;
@@ -228,23 +235,86 @@ nav>ul {
 }
 
 #content-right h2 {
-    margin-top: 4vh;
     font-family: var(--display-font);
     font-weight: 400;
-    font-size: 2.5rem;
+    font-size: 2.625rem;
+    letter-spacing: 2px;
     color: var(--text-color-dark-bg);
 }
 
 #content-right p {
-    display: inline;
+    max-width: 40%;
     text-align: right;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 300;
     color: var(--text-color-dark-bg);
+    opacity: 0.8;
+}
+
+/* -- Media Queries Hero -- */
+@media only screen and (max-width: 1400px) {
+    .main-heading {
+        font-size: 4rem;
+    }
+
+    #content-right h2 {
+        font-size: 2rem;
+    }
+
+    #content-right p {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .hero__wrapper {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .hero__content-container {
+        row-gap: 3vh;
+    }
+
+    .main-heading {
+        font-size: 3.5rem;
+    }
+
+    #content-right h2 {
+        font-size: 1.75rem;
+    }
+
+    #content-right p {
+        max-width: 60%;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .hero__wrapper {
+        width: 95%;
+        height: 90%;
+        padding: 2vh;
+    }
+
+    #content-right p {
+        max-width: 80%;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .main-heading {
+        font-size: 2.75rem;
+    }
+
+    #content-right h2 {
+        font-size: 1.5rem;
+    }
 }
 
 /* About Me Section */
-
 .about__container {
     display: flex;
     justify-content: center;
@@ -270,7 +340,7 @@ nav>ul {
     font-weight: 400;
 }
 
-.about__wrapper h2 > span {
+.about__wrapper h2>span {
     font-family: var(--accent-font);
     font-style: italic;
 }
@@ -286,7 +356,7 @@ nav>ul {
     float: inline-end;
 }
 
-.about__personal-image-container > img {
+.about__personal-image-container>img {
     max-width: 100%;
     display: block;
     border: 3px solid #FFF;
