@@ -5,6 +5,7 @@
     --accent-color: #101418;
     --accent-color-hover: #222B33;
     --text-color: #323744;
+    --text-color-dark-bg: #DDD;
     --heading-color: #0E1115;
 
     /* Fonts */
@@ -17,9 +18,12 @@
 
     /* Shadows */
     --shadow-s:
-        inset 0px 4px 4px #ffffff20, /* Sombrita arriba simulando luz chocando con el elemento */
-        0px 1px 2px #00000030, /* Sombra mas oscura pegada al elemento para recalcar el levantamiento del elemento */
-        0px 2px 4px #00000015; /* Sombra menos oscura pero con mas blur para extender la distancia de la sombra */
+        inset 0px 4px 4px #ffffff20,
+        /* Sombrita arriba simulando luz chocando con el elemento */
+        0px 1px 2px #00000030,
+        /* Sombra mas oscura pegada al elemento para recalcar el levantamiento del elemento */
+        0px 2px 4px #00000015;
+    /* Sombra menos oscura pero con mas blur para extender la distancia de la sombra */
     --shadow-m:
         inset 0px 4px 4px #ffffff40,
         0px 2px 4px #00000030,
@@ -76,7 +80,7 @@ nav>ul {
 .logo {
     font-family: var(--display-font);
     text-decoration: none;
-    color: var(--bg-color);
+    color: var(--text-color-dark-bg);
 }
 
 .nav__inner-list {
@@ -132,6 +136,7 @@ nav>ul {
     background-size: cover;
     background-position: center;
     border-radius: var(--rounded-main);
+    box-shadow: 2px 2px 4px 2px var(--accent-color) ;
 }
 
 .hero__corners-container {
@@ -160,19 +165,31 @@ nav>ul {
     height: 100%;
 }
 
-.hero__content-left {
+.hero__content-column {
     display: flex;
     flex-flow: column nowrap;
     justify-content: top;
-    align-content: center;
     height: 100%;
+}
+
+#content-left {
+    align-content: top;
+    width: 30%;
+    padding-top: 4vh;
+}
+
+#content-right {
+    justify-content: center;
+    align-content: end;
+    width: 40%;
+    text-align: right;
 }
 
 .hero__blinking-point {
     position: relative;
-    right: 12px;
-    width: 8px;
-    height: 8px;
+    right: 1rem;
+    width: 10px;
+    height: 10px;
     background-color: var(--bg-color);
     border-radius: 50%;
     animation: 2s ease-in blinking infinite;
@@ -183,22 +200,40 @@ nav>ul {
     0% {
         opacity: 0;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
         opacity: 0;
     }
 }
 
 .main-heading {
-    font-size: 3.625rem;
+    font-size: 4.5rem;
     font-family: var(--display-font);
-    font-weight: 300;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 10px;
+    color: var(--text-color-dark-bg);
 }
 
 .main-heading span {
     display: block;
+}
+
+#content-right h2 {
+    margin-top: 4vh;
+    font-family: var(--display-font);
+    font-weight: 400;
+    font-size: 2.5rem;
+    color: var(--text-color-dark-bg);
+}
+
+#content-right p {
+    display: inline;
+    text-align: right;
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--text-color-dark-bg);
 }
