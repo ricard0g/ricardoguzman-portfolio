@@ -56,6 +56,18 @@ body {
     box-shadow: var(--shadow-m);
 }
 
+.accent-text {
+    font-family: var(--accent-font);
+    font-style: italic;
+}
+
+.section-heading {
+    margin-bottom: 1vh;
+    font-size: 2.25rem;
+    font-family: var(--display-font);
+    font-weight: 400;
+}
+
 /* Header */
 
 header {
@@ -395,7 +407,6 @@ nav>ul {
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 5vh 0;
     margin-top: 10vh;
 }
 
@@ -407,18 +418,6 @@ nav>ul {
     row-gap: 1.5vh;
     width: 40%;
     text-align: center;
-}
-
-.about__wrapper h2 {
-    margin-bottom: 1vh;
-    font-size: 2.25rem;
-    font-family: var(--display-font);
-    font-weight: 400;
-}
-
-.about__wrapper h2>span {
-    font-family: var(--accent-font);
-    font-style: italic;
 }
 
 .about__content-wrapper {
@@ -464,4 +463,128 @@ nav>ul {
     .about__wrapper {
         width: 90%;
     }
+}
+
+/* Portfolio Section */
+
+.portfolio__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10vh;
+}
+
+.portfolio__wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: top;
+    align-content: center;
+    row-gap: 1.5vh;
+    width: 40%;
+    text-align: center;
+}
+
+.portfolio__grid-container {
+    display: grid;
+    grid-template: repeat(2, 30vh) / repeat(3, 1fr);
+    grid-template-areas:
+     "abstrakct abstrakct coffetopia"
+     "blog sartorial sartorial";
+    gap: 1vh;
+    height: 100vh;
+}
+
+.portfolio__proyect-card {
+    width: 100%;
+    height: 100%;
+    background-color: #fff ;
+    border-radius: var(--rounded-main);
+    box-shadow: var(--shadow-m);
+}
+
+.portfolio__proyect-card > figure {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: var(--rounded-main);
+    overflow: hidden;
+}
+
+.portfolio__proyect-card .portfolio__big-card-img {
+    position: relative;
+    left: 5%;
+    top: 2vh;
+    min-width: 115%;
+}
+
+.portfolio__proyect-card .portfolio__small-card-img {
+    position: relative;
+    left: 2%;
+    top: 2vh;
+    min-width: 250%;
+    border-radius: 5px;
+}
+
+
+#abstrakct-card {
+    grid-area: abstrakct;
+}
+
+#coffetopia-card {
+    grid-area: coffetopia;
+}
+
+#blog-card {
+    grid-area: blog;
+}
+
+#blog-card img {
+    top: 3vh;
+    left: 10%;
+}
+
+#sartorial-card {
+    grid-area: sartorial;
+}
+
+.portfolio__card-caption {
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2vh;
+    height: 30vh;
+    padding: 0 2vw;
+    border-radius: var(--rounded-main);
+    backdrop-filter: blur(8px);
+    background-color:#101418b0;
+    color: var(--text-color-dark-bg);
+    opacity: 0;
+    transition: all 200ms linear;
+}
+
+.portfolio__card-caption h2 {
+    font-size: 1.5rem;
+    font-family: var(--display-font);
+}
+
+.portfolio__card-caption p {
+    font-weight: 300;
+}
+
+.portfolio__card-caption a {
+    background-color: var(--accent-color);
+    padding: .75rem 1.25rem;
+    border-radius: var(--rounded-main);
+    box-shadow: var(--shadow-m);
+}
+
+.portfolio__proyect-card:hover .portfolio__card-caption {
+    visibility: visible;
+    opacity: 1;
 }
