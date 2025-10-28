@@ -184,12 +184,9 @@
                             <img class="portfolio__big-card-img" src="assets/abstrakct_screenshot.webp" />
                             <figcaption class="portfolio__card-caption">
                                 <h2>Absktrakct</h2>
-                                <p>Artistic ecommerce that works as a gallery built with Liquid, TS, Hydrogen, Remix and
+                                <p>Artistic ecommerce that works as a gallery built with Hydrogen, Remix and
                                     Tailwindcss.</p>
-                                <div class="portfolio__links-container">
-                                    <a href="https://abstrakct.netlify.app/" target="_blank">Visitar</a>
-                                    <a href="https://github.com/ricard0g/abstrakct" target="_blank">GitHub</a>
-                                </div>
+                                <a href="https://abstrakct.netlify.app/" target="_blank">Ver Proyecto</a>
                             </figcaption>
                         </figure>
                     </article>
@@ -198,11 +195,11 @@
                             <img class="portfolio__small-card-img" src="./assets/coffetopia_screenshot.webp" />
                             <figcaption class="portfolio__card-caption">
                                 <h2>Coffetopia</h2>
-                                <p>Tienda con sección "Cart Booster" para disparar conversiones y compras. Hecho con
-                                    Liquid, TS y Preact. <strong>Password: shorto</strong></p>
+                                <p>Artistic ecommerce that works as a gallery built with Hydrogen, Remix and
+                                    Tailwindcss.</p>
                                 <div class="portfolio__links-container">
-                                    <a href="https://coffeee-topia.myshopify.com/password" target="_blank">Visitar</a>
-                                    <a href="https://github.com/ricard0g/coffeetopia" target="_blank">GitHub</a>
+                                    <a href="https://abstrakct.netlify.app/" target="_blank">Ver Proyecto</a>
+                                    <a href="https://abstrakct.netlify.app/" target="_blank">Ver Proyecto</a>
                                 </div>
                             </figcaption>
                         </figure>
@@ -210,27 +207,16 @@
                     <article id="blog-card" class="portfolio__proyect-card">
                         <figure>
                             <img class="portfolio__small-card-img" src="./assets/portfolio-screenshot-modified.webp" />
-                            <figcaption class="portfolio__card-caption">
-                                <h2>Blog Personal</h2>
-                                <p>Blog personal donde escribo sobre distintas cosas. Creado con Astro.</p>
-                                <div class="portfolio__links-container">
-                                    <a href="https://ricardoguzman.dev/" target="_blank">Visitar</a>
-                                    <a href="https://github.com/ricard0g/portfolio-25-06" target="_blank">GitHub</a>
-                                </div>
+                            <figcaption>
+                                <h2></h2>
                             </figcaption>
                         </figure>
                     </article>
                     <article id="sartorial-card" class="portfolio__proyect-card">
                         <figure>
                             <img class="portfolio__big-card-img" src="./assets/sartorial_store_screenshot.webp" />
-                            <figcaption class="portfolio__card-caption">
-                                <h2>Sartorial Store</h2>
-                                <p>Shopify store built completely from scratch using Liquid. Used every API from
-                                    Shpify's Themes. <strong>Password: shorto</strong></p>
-                                <div class="portfolio__links-container">
-                                    <a href="https://sartorial-store.myshopify.com/password" target="_blank">Visitar</a>
-                                    <a href="https://github.com/ricard0g/sartorial-store" target="_blank">GitHub</a>
-                                </div>
+                            <figcaption>
+                                <h2></h2>
                             </figcaption>
                         </figure>
                     </article>
