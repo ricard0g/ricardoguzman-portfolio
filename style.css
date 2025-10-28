@@ -74,6 +74,16 @@ body {
     font-weight: 400;
 }
 
+@media only screen and (max-width: 1000px) {
+    .section-heading {
+        font-size: 1.8rem;
+    }
+
+    .badge {
+        font-size: 0.85rem;
+    }
+}
+
 /* Header */
 
 header {
@@ -465,6 +475,10 @@ nav>ul {
     .about__wrapper {
         width: 80%;
     }
+
+    .about__content-wrapper p {
+        font-size: 1rem;
+    }
 }
 
 @media only screen and (max-width: 425px) {
@@ -583,6 +597,7 @@ nav>ul {
 .portfolio__card-caption h2 {
     font-size: 1.5rem;
     font-family: var(--display-font);
+    font-weight: 400;
 }
 
 .portfolio__card-caption p {
@@ -663,7 +678,7 @@ nav>ul {
         flex-flow: column nowrap;
         justify-content: center;
         align-items: center;
-        transform:  translateY(-100%);
+        transform: translateY(-100%);
         row-gap: 2vh;
         height: 30%;
         width: 80%;
@@ -696,6 +711,16 @@ nav>ul {
         box-shadow: var(--shadow-m);
     }
 
+    .portfolio__card-caption h2 {
+        font-size: 1.25rem;
+        font-family: var(--display-font);
+        font-weight: 400;
+    }
+
+    .portfolio__card-caption p {
+        font-size: 0.85rem;
+        font-weight: 300;
+    }
 }
 
 /* Contacto Section */
@@ -731,7 +756,7 @@ form {
     padding: 5vh;
     background-color: #fff;
     border-radius: var(--rounded-main);
-    box-shadow: 
+    box-shadow:
         inset 0 -4px 7px #00000030,
         inset 0 4px 7px #00000030;
 }
@@ -765,9 +790,10 @@ form {
     box-shadow: var(--shadow-m);
 }
 
-.contacto__input-group input:focus, .contacto__input-group textarea {
+.contacto__input-group input:focus,
+.contacto__input-group textarea {
     outline: none;
-} 
+}
 
 .contacto__input-group textarea {
     width: 100%;
@@ -781,7 +807,8 @@ form {
 }
 
 
-.contacto__input-group textarea::placeholder, .contacto__input-group input {
+.contacto__input-group textarea::placeholder,
+.contacto__input-group input {
     font-size: 0.9rem;
 }
 
@@ -790,7 +817,9 @@ button.badge {
     padding: 0.5rem 0;
     border: none;
     cursor: pointer;
+    font-size: 1.1rem;
     transition: all 100ms linear;
+
     &:hover {
         background-color: var(--accent-color-hover);
     }
@@ -857,7 +886,11 @@ footer ul {
 
     footer ul {
         flex-flow: column nowrap;
-        row-gap: 2vh;
+        row-gap: 4vh;
+    }
+
+    .footer-logo {
+        font-size: 1.5rem;
     }
 
     .footer__logo-item {
