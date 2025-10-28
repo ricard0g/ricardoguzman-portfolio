@@ -108,7 +108,7 @@ nav>ul {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
+    width: 70%;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -415,7 +415,7 @@ nav>ul {
 .about__wrapper {
     display: flex;
     flex-flow: column nowrap;
-    justify-content: top;
+    justify-content: center;
     align-content: center;
     row-gap: 1.5vh;
     width: 40%;
@@ -475,15 +475,15 @@ nav>ul {
     align-items: center;
     width: 100%;
     height: auto;
-    margin-top: 15vh;
+    margin-top: 10vh;
     padding: 10vh 0;
 }
 
 .portfolio__wrapper {
     display: flex;
     flex-flow: column nowrap;
-    justify-content: top;
-    align-content: center;
+    justify-content: center;
+    align-items: center;
     row-gap: 1.5vh;
     width: 40%;
     height: auto;
@@ -497,7 +497,6 @@ nav>ul {
         "abstrakct abstrakct coffetopia"
         "blog sartorial sartorial";
     gap: 1vh;
-    height: 100vh;
     max-width: 100%;
 }
 
@@ -696,3 +695,119 @@ nav>ul {
     }
 
 }
+
+/* Contacto Section */
+
+.contacto__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: 10vh;
+    padding: 10vh 0;
+}
+
+.contacto__wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: top;
+    align-items: center;
+    row-gap: 1.5vh;
+    width: 40%;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-content: start;
+    row-gap: 2vh;
+    width: 75%;
+    height: 100%;
+    padding: 5vh;
+    background-color: #fff;
+    border-radius: var(--rounded-main);
+    box-shadow: 
+        inset 0 -4px 7px #00000030,
+        inset 0 4px 7px #00000030;
+}
+
+.contacto__top-input-groups {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1vw;
+}
+
+.contacto__top-input-groups .contacto__input-group {
+    width: 50%;
+}
+
+.contacto__input-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 1vh;
+}
+
+.contacto__input-group input {
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: var(--rounded-main);
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-m);
+}
+
+.contacto__input-group input:focus, .contacto__input-group textarea {
+    outline: none;
+} 
+
+.contacto__input-group textarea {
+    width: 100%;
+    resize: none;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: var(--rounded-main);
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-m);
+}
+
+
+.contacto__input-group textarea::placeholder, .contacto__input-group input {
+    font-size: 0.9rem;
+}
+
+button.badge {
+    width: 100%;
+    padding: 0.5rem 0;
+    border: none;
+    cursor: pointer;
+    transition: all 100ms linear;
+    &:hover {
+        background-color: var(--accent-color-hover);
+    }
+}
+
+/* --Media Queries Contacto-- */
+@media only screen and (max-width: 1250px) {
+    .contacto__wrapper {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .contacto__wrapper {
+        width: 90%;
+    }
+
+    form {
+        width: 100%;
+    }
+}
+
