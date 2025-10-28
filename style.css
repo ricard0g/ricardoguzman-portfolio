@@ -17,6 +17,12 @@
     --rounded-main: 20px;
 
     /* Shadows */
+    --shadow-m-light:
+        inset 0px 4px 4px #ffffff15,
+        /* Sombrita arriba simulando luz chocando con el elemento */
+        0px 2px 4px #00000030,
+        /* Sombra mas oscura pegada al elemento para recalcar el levantamiento del elemento */
+        0px 4px 8px #00000015;
     --shadow-m:
         inset 0px 4px 4px #ffffff40,
         /* Sombrita arriba simulando luz chocando con el elemento */
@@ -476,7 +482,7 @@ nav>ul {
     width: 100%;
     height: auto;
     margin-top: 10vh;
-    padding: 10vh 0;
+    padding: 5vh 0;
 }
 
 .portfolio__wrapper {
@@ -673,10 +679,6 @@ nav>ul {
     }
 }
 
-/* @media only screen and (max-heigh: kj) { */
-/**/
-/* } */
-
 @media only screen and (max-width: 640px) {
     .portfolio__wrapper {
         width: 95%;
@@ -775,7 +777,7 @@ form {
     border: none;
     border-radius: var(--rounded-main);
     font-size: 0.9rem;
-    box-shadow: var(--shadow-m);
+    box-shadow: var(--shadow-m-light);
 }
 
 
@@ -811,3 +813,66 @@ button.badge {
     }
 }
 
+
+/* Footer */
+
+footer {
+    width: 80%;
+    margin: 5vh auto;
+    padding: 2vh 2.5vw;
+    background-color: #fff;
+    border-radius: var(--rounded-main);
+    box-shadow: 0 2px 2px #00000030;
+}
+
+footer ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.footer__rights-reserved {
+    font-size: 0.85rem;
+    font-weight: 200;
+}
+
+.footer-logo {
+    font-size: 1.3rem;
+    font-family: var(--display-font);
+}
+
+.footer__inner-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
+/* --Media Queries Footer--*/
+@media only screen and (max-width: 640px) {
+    footer {
+        width: 90%;
+    }
+
+    footer ul {
+        flex-flow: column nowrap;
+        row-gap: 2vh;
+    }
+
+    .footer__logo-item {
+        order: 0;
+    }
+
+    .footer__rights-item {
+        order: 2;
+    }
+
+    .footer__inner-list-item {
+        order: -2;
+    }
+
+    .footer__inner-list {
+        flex-flow: row nowrap;
+    }
+}
