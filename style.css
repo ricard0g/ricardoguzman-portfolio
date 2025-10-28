@@ -109,7 +109,6 @@ nav>ul {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    position: relative;
     list-style: none;
 }
 
@@ -650,13 +649,6 @@ nav>ul {
         max-width: 100%;
     }
 
-    .portfolio__proyect-card>figure {
-        max-width: 100%;
-        max-height: 100%;
-        border-radius: var(--rounded-main);
-        overflow: hidden;
-    }
-
     .portfolio__big-card-img,
     .portfolio__small-card-img {
         left: 0%;
@@ -674,23 +666,14 @@ nav>ul {
     .portfolio__card-caption {
         position: static;
         visibility: visible;
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        align-items: center;
         transform: translateY(-100%);
-        row-gap: 2vh;
         height: 30%;
         width: 80%;
         margin: 0 auto;
         padding: 1vh;
-        border-radius: var(--rounded-main);
-        backdrop-filter: blur(8px);
         background-color: #101418d0;
         box-shadow: 0px 2px 4px #101418d0;
-        color: var(--text-color-dark-bg);
         opacity: 1;
-        transition: all 200ms linear;
     }
 }
 
@@ -704,22 +687,15 @@ nav>ul {
     }
 
     .portfolio__card-caption a {
-        display: inline;
-        background-color: var(--accent-color);
         padding: .75rem 1.25rem;
-        border-radius: var(--rounded-main);
-        box-shadow: var(--shadow-m);
     }
 
     .portfolio__card-caption h2 {
         font-size: 1.25rem;
-        font-family: var(--display-font);
-        font-weight: 400;
     }
 
     .portfolio__card-caption p {
         font-size: 0.85rem;
-        font-weight: 300;
     }
 }
 
