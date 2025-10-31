@@ -511,7 +511,7 @@ nav>ul {
 
 .portfolio__grid-container {
     display: grid;
-    grid-template: repeat(2, 32vh) / repeat(3, 33%);
+    grid-template: repeat(2, 32vh) / repeat(3, minmax(33%, 1fr));
     grid-template-areas:
         "abstrakct abstrakct coffetopia"
         "blog sartorial sartorial";
