@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta name="charset" content="UTF-8">
+    <meta name="viewport" content="width:device-width, initial-scale=1">
+    <meta name="author" content="Ricardo Guzman">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="description" content="Portfolio de Ricardo Guzman Desarrollador Web">
+    <link rel="preload" as="image" href="./assets/pexels-adrien-olichon-1257089-2387793.webp">
+    <link rel="icon" href="./assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Onest:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Portfolio Ricardo Guzman</title>
+</head>
+
+<body>
+    <header>
+        <!-- Desktop Navbar -->
+        <nav class="nav__desktop-container">
+            <ul>
+                <li>
+                    <a href="/" class="logo">
+                        <span>RICARDO<sup>®</sup></span>
+                    </a>
+                </li>
+                <li class="nav__links-container">
+                    <ul class="nav__inner-list">
+                        <li>
+                            <a href="#about-section">
+                                Sobre Mi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#portfolio-section">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contact-section">
+                                Contacto
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://github.com/ricard0g">
+                        <svg class="svg" class="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-github-icon lucide-github">
+                            <path
+                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                            <path d="M9 18c-4.51 2-5-2-7-2" />
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Mobile Navbar -->
+        <nav class="nav-mobile__container">
+            <ul>
+                <li>
+                    <a href="/" class="logo">
+                        <span>RICARDO<sup>®</sup></span>
+                    </a>
+                </li>
+                <li>
+                    <label id="burger-btn" for="menu-toggle">
+                        <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu">
+                            <path d="M4 5h16" />
+                            <path d="M4 12h16" />
+                            <path d="M4 19h16" />
+                        </svg>
+                    </label>
+                    <input type="checkbox" id="menu-toggle">
+
+                    <ul class="nav-mobile__menu">
+                        <li>
+                            <a href="#about-section">
+                                Sobre Mi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#portfolio-section">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contact-section">
+                                Contacto
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero__container">
+            <div class="hero__wrapper">
+                <div class="hero__corners-container">
+                    <div class="hero__corner-container">
+                        <img class="hero__corner-image" src="./assets/top-left-corner.png"
+                            alt="Top left corner illustration" />
+                    </div>
+                    <div class="hero__corner-container">
+                        <img class="hero__corner-image" src="./assets/top-right-corner.png"
+                            alt="Top right corner illustration" />
+                    </div>
+                </div>
+                <div class="hero__content-container">
+                    <div id="content-left" class="hero__content-column">
+                        <div class="hero__blinking-point"></div>
+                        <h1 class="main-heading"><span>Ricardo</span><span>Guzman</span> </h1>
+                    </div>
+                    <div id="content-right" class="hero__content-column">
+                        <h2>Desarrollador Web</h2>
+                        <p>Transformo diseños en experiencias digitales a través del código.</p>
+                    </div>
+                </div>
+                <div class="hero__corners-container">
+                    <div class="hero__corner-container">
+                        <img class="hero__corner-image" src="./assets/bottom-left-corner.png"
+                            alt="Bottom left corner illustration" />
+                    </div>
+                    <div class="hero__corner-container">
+                        <img class="hero__corner-image" src="./assets/bottom-right-corner.png"
+                            alt="Bottom right corner illustration" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Me Seciont -->
+        <section id="about-section" class="about__container">
+            <div class="about__wrapper">
+                <span class="badge">Sobre Mi</span>
+                <h2 class="section-heading">Que Me <span class="accent-text">Gusta?</span></h2>
+                <div class="about__content-wrapper">
+                    <div class="about__personal-image-container">
+                        <img src="./assets/foto-personal-modified.JPG"
+                            alt="Ricardo Guzman sentado en una silla sonriendo" title="Soy yo! Ricardo Guzman">
+                    </div>
+
+                    <p>Hola 👋</p>
+                    <p>
+                        Me gusta mucho aprender 🧠 y leer de tecnología, pero lo que más disfruto es sentarme a crear y
+                        ver
+                        cómo una idea se convierte en algo real.
+                    </p>
+                    <p>
+                        La mayoría del día me pilla delante del ordenador: investigando, probando cosas y programando
+                        variedad de cosas.
+                    </p>
+                    <p>
+                        Cuando se trata de software soy como un niño: es abrir la terminal, neovim y de un momento a
+                        otro, pasaron horas 👨‍💻.
+                    </p>
+                    <p>
+                        Sigo formándome en Prometeo mientras saco adelante proyectos personales y alguno lo documenta
+                        en vídeos largos para quien le sirva.
+                    </p>
+                    <p>
+                        Viviendo en España 🇪🇸 desde los 13, Venezolano 🇻🇪 de nacimiento, con mezcla de arepas y
+                        tortilla de patata en el mismo
+                        menú.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio Section -->
+        <section id="portfolio-section" class="portfolio__container">
+            <div class="portfolio__wrapper">
+                <span class="badge">Portfolio</span>
+                <h2 class="section-heading">Mis <span class="accent-text">Proyectos</span></h2>
+                <div class="portfolio__grid-container">
+                    <article id="abstrakct-card" class="portfolio__proyect-card">
+                        <figure>
+                            <img class="portfolio__big-card-img" src="assets/abstrakct_screenshot.webp"
+                                alt="Proyecto Abstrakct pantalla inicial tienda online" />
+                            <figcaption class="portfolio__card-caption">
+                                <h2>Absktrakct</h2>
+                                <p>Ecommerce artístico que funciona como una galería construido con Liquid, TS,
+                                    Hydrogen, Remix y TailwindCSS.</p>
+                                <div class="portfolio__links-container">
+                                    <a href="https://abstrakct.netlify.app/" target="_blank">Visitar</a>
+                                    <a href="https://github.com/ricard0g/abstrakct" target="_blank">GitHub</a>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </article>
+                    <article id="coffetopia-card" class="portfolio__proyect-card">
+                        <figure>
+                            <img class="portfolio__small-card-img" src="./assets/coffetopia_screenshot.webp"
+                                alt="Proyecto Coffetopia pantalla inicial tienda online" />
+                            <figcaption class="portfolio__card-caption">
+                                <h2>Coffetopia</h2>
+                                <p>Tienda con sección "Cart Booster" para disparar conversiones y compras. Hecho con
+                                    Liquid, TS y Preact. <strong>Contraseña: shorto</strong></p>
+                                <div class="portfolio__links-container">
+                                    <a href="https://coffeee-topia.myshopify.com/password" target="_blank">Visitar</a>
+                                    <a href="https://github.com/ricard0g/coffeetopia" target="_blank">GitHub</a>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </article>
+                    <article id="blog-card" class="portfolio__proyect-card">
+                        <figure>
+                            <div class="portfolio__blog-img-container">
+                                <img class="portfolio__small-card-img" src="./assets/portfolio-screenshot-modified.webp"
+                                    alt="Blog Personal pagina web pantalla inicial" />
+                            </div>
+                            <figcaption id="blog-caption" class="portfolio__card-caption">
+                                <h2>Blog Personal</h2>
+                                <p>Blog personal donde escribo sobre distintas cosas. Creado con Astro.</p>
+                                <div class="portfolio__links-container">
+                                    <a href="https://ricardoguzman.dev/" target="_blank">Visitar</a>
+                                    <a href="https://github.com/ricard0g/portfolio-25-06" target="_blank">GitHub</a>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </article>
+                    <article id="sartorial-card" class="portfolio__proyect-card">
+                        <figure>
+                            <img class="portfolio__big-card-img" src="./assets/sartorial_store_screenshot.webp"
+                                alt="Proyecto Sartorial pantalla inicial tienda online" />
+                            <figcaption class="portfolio__card-caption">
+                                <h2>Sartorial Store</h2>
+                                <p>Tienda Shopify construida completamente desde cero usando Liquid. Tambien se usaron
+                                    todas las APIs de los Temas Shopify. <strong>Contraseña: shorto</strong></p>
+                                <div class="portfolio__links-container">
+                                    <a href="https://sartorial-store.myshopify.com/password" target="_blank">Visitar</a>
+                                    <a href="https://github.com/ricard0g/sartorial-store" target="_blank">GitHub</a>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- Contacto -->
+        <section id="contact-section" class="contacto__container">
+            <div class="contacto__wrapper">
+                <span class="badge">Contacto</span>
+                <h2 class="section-heading">Ponte en Contacto <span class="accent-text">Conmigo</span></h2>
+                <form action="#" method="POST" enctype="application/x-www-form-urlencoded">
+                    <div class="contacto__input-group">
+                        <label for="nombre">Tu Nombre Completo</label>
+                        <input type="text" name="nombre" id="nombre" placeholder="Juan Ramos..." required>
+                    </div>
+                    <div class="contacto__input-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" name="correo" id="correo" required placeholder="juan@gmail.com...">
+                    </div>
+                    <div class="contacto__input-group">
+                        <label for="mensaje">Tu Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" cols="35" required
+                            placeholder="Escribe lo que quieras aqui..."></textarea>
+                    </div>
+                    <button type="submit" class="badge">Enviar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <ul>
+            <li class="footer__rights-item">
+                <p class="footer__rights-reserved">
+                    2025<sup>©</sup> All Rights Reserved
+                </p>
+            </li>
+            <li class="footer__logo-item">
+                <span class="footer-logo">RICARDO<sup>®</sup></span>
+            </li>
+            <li class="footer__inner-list-item">
+                <ul class="footer__inner-list">
+                    <li>
+                        <a aria-label="Visita mi canal de YouTube" target="_blank"
+                            href="https://www.youtube.com/@ricardoguzdev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-youtube-icon lucide-youtube">
+                                <path
+                                    d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+                                <path d="m10 15 5-3-5-3z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a aria-label="Visita mi perfil en LinkedIn"
+                            href="https://www.linkedin.com/in/ricardo-guzman-duran-a09b62176" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-linkedin-icon lucide-linkedin">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect width="4" height="12" x="2" y="9" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a aria-label="Visita my perfil en X.com" href="https://x.com/ricardoguzdev" target="_blank"
+                            rel="noopener noreferrer">
+                            <svg fill="#101418" width="20px" height="20px" viewBox="0 0 1200 1227">
+                                <path
+                                    d="M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </footer>
+</body>
+
+</html>
