@@ -1,0 +1,173 @@
+---
+import abstrakctImg from '../assets/abstrakct_screenshot.webp';
+import coffetopiaImg from '../assets/coffetopia_screenshot.webp';
+import portfolioImg from '../assets/portfolio-screenshot-modified.webp';
+import sartorialImg from '../assets/sartorial_store_screenshot.webp';
+---
+
+<section id="portfolio-section" class="portfolio__container flex justify-center items-center w-full h-auto mt-[10vh] scroll-mt-10 py-[5vh] px-0">
+    <div class="portfolio__wrapper flex flex-col justify-center items-center gap-y-[1.5vh] w-[60%] max-[1250px]:w-[60%] max-[640px]:w-[95%] h-auto text-center">
+        <span class="badge">Portfolio</span>
+        <h2 class="section-heading">Mis <span class="accent-text">Proyectos</span></h2>
+        
+        <div class="portfolio__grid-container max-w-full gap-[1vh] max-[1150px]:gap-[5vh]">
+            <!-- Abstrakct -->
+            <article id="abstrakct-card" class="portfolio__proyect-card group w-full h-full bg-white rounded-main shadow-m">
+                <figure class="relative max-w-full max-h-full rounded-main overflow-hidden">
+                    <img class="portfolio__big-card-img relative left-[5%] top-[2vh] min-w-[600px] max-[1150px]:left-0 max-[1150px]:min-w-[500px] max-[1150px]:max-w-[700px]" 
+                         src={abstrakctImg.src} alt="Proyecto Abstrakct pantalla inicial tienda online" />
+                    <figcaption class="portfolio__card-caption group-hover:visible group-hover:opacity-100 max-[1150px]:visible max-[1150px]:opacity-100">
+                        <h2 class="text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-normal">Absktrakct</h2>
+                        <p class="text-[0.95rem] max-[640px]:text-[0.85rem] font-light">
+                            Ecommerce artístico que funciona como una galería construido con Liquid, TS, Hydrogen, Remix y TailwindCSS.
+                        </p>
+                        <div class="portfolio__links-container flex justify-center items-center gap-x-[10px] gap-y-[5px] flex-wrap">
+                            <a href="https://abstrakct.netlify.app/" target="_blank" class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m">Visitar</a>
+                            <a href="https://github.com/ricard0g/abstrakct" target="_blank" class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m">GitHub</a>
+                        </div>
+                    </figcaption>
+                </figure>
+            </article>
+
+            <!-- Coffetopia -->
+            <article id="coffetopia-card" class="portfolio__proyect-card group w-full h-full bg-white rounded-main shadow-m">
+                <figure class="relative max-w-full max-h-full rounded-main overflow-hidden">
+                    <img class="portfolio__small-card-img relative left-[2%] top-[2vh] min-w-[750px] rounded-[5px] max-[1150px]:left-0 max-[1150px]:min-w-[500px] max-[1150px]:max-w-[700px]" 
+                         src={coffetopiaImg.src} alt="Proyecto Coffetopia pantalla inicial tienda online" />
+                    <figcaption class="portfolio__card-caption group-hover:visible group-hover:opacity-100 max-[1150px]:visible max-[1150px]:opacity-100">
+                        <h2 class="text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-normal">Coffetopia</h2>
+                        <p class="text-[0.95rem] max-[640px]:text-[0.85rem] font-light">
+                            Tienda con sección "Cart Booster" para disparar conversiones y compras. Hecho con Liquid, TS y Preact. <strong>Contraseña: shorto</strong>
+                        </p>
+                        <div class="portfolio__links-container flex justify-center items-center gap-x-[10px] gap-y-[5px] flex-wrap">
+                            <a href="https://coffeee-topia.myshopify.com/password" target="_blank" class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m">Visitar</a>
+                            <a href="https://github.com/ricard0g/coffeetopia" target="_blank" class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m">GitHub</a>
+                        </div>
+                    </figcaption>
+                </figure>
+            </article>
+
+            <!-- Blog -->
+            <article id="blog-card" class="portfolio__proyect-card group w-full h-full bg-white rounded-main shadow-m">
+                <figure class="relative max-w-full max-h-full rounded-main overflow-hidden">
+                    <div class="portfolio__blog-img-container">
+                        <img class="portfolio__small-card-img relative left-[2%] top-[2vh] min-w-[550px] rounded-[5px] max-[1150px]:left-0 max-[1150px]:min-w-[500px] max-[1150px]:max-w-[700px]" 
+                             src={portfolioImg.src} alt="Blog Personal pagina web pantalla inicial" 
+                             style="top: 3vh; left: 10%;" /> 
+                             <!-- Note: inline style for slight adjustment overridden by media query logic partially, keeping inline as source had specific rule #blog-card img -->
+                    </div>
+                    <figcaption id="blog-caption" class="portfolio__card-caption group-hover:visible group-hover:opacity-100 max-[1150px]:visible max-[1150px]:opacity-100">
+                        <h2 class="text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-normal">Blog Personal</h2>
+                        <p class="text-[0.95rem] max-[640px]:text-[0.85rem] font-light">
+                            Blog personal donde escribo sobre distintas cosas. Creado con Astro.
+                        </p>
+                        <div class="portfolio__links-container flex justify-center items-center gap-x-[10px] gap-y-[5px] flex-wrap">
+                            <a href="https://ricardoguzman.dev/" target="_blank" class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m">Visitar</a>
+                            <a href="https://github.com/ricard0g/portfolio-25-06" target="_blank" class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m">GitHub</a>
+                        </div>
+                    </figcaption>
+                </figure>
+            </article>
+
+            <!-- Sartorial -->
+            <article id="sartorial-card" class="portfolio__proyect-card group w-full h-full bg-white rounded-main shadow-m">
+                <figure class="relative max-w-full max-h-full rounded-main overflow-hidden">
+                    <img class="portfolio__big-card-img relative left-[5%] top-[2vh] min-w-[600px] max-[1150px]:left-0 max-[1150px]:min-w-[500px] max-[1150px]:max-w-[700px]" 
+                         src={sartorialImg.src} alt="Proyecto Sartorial pantalla inicial tienda online" />
+                    <figcaption class="portfolio__card-caption group-hover:visible group-hover:opacity-100 max-[1150px]:visible max-[1150px]:opacity-100">
+                        <h2 class="text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-normal">Sartorial Store</h2>
+                        <p class="text-[0.95rem] max-[640px]:text-[0.85rem] font-light">
+                            Tienda Shopify construida completamente desde cero usando Liquid. Tambien se usaron todas las APIs de los Temas Shopify. <strong>Contraseña: shorto</strong>
+                        </p>
+                        <div class="portfolio__links-container flex justify-center items-center gap-x-[10px] gap-y-[5px] flex-wrap">
+                            <a href="https://sartorial-store.myshopify.com/password" target="_blank" class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m">Visitar</a>
+                            <a href="https://github.com/ricard0g/sartorial-store" target="_blank" class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m">GitHub</a>
+                        </div>
+                    </figcaption>
+                </figure>
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+    .portfolio__grid-container {
+        display: grid;
+        grid-template: repeat(2, 42vh) / repeat(3, minmax(33%, 1fr));
+        grid-template-areas:
+            "abstrakct abstrakct coffetopia"
+            "blog sartorial sartorial";
+    }
+
+    #abstrakct-card { grid-area: abstrakct; }
+    #coffetopia-card { grid-area: coffetopia; }
+    #blog-card { grid-area: blog; }
+    #sartorial-card { grid-area: sartorial; }
+
+    .portfolio__card-caption {
+        visibility: hidden;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        row-gap: 2vh;
+        width: 100%;
+        height: 100%;
+        padding: 0 2vw;
+        border-radius: var(--radius-main);
+        backdrop-filter: blur(8px);
+        background-color: #101418b0;
+        color: var(--color-text-dark-bg);
+        opacity: 0;
+        transition: all 200ms linear;
+    }
+
+    .portfolio__proyect-card:hover .portfolio__card-caption {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Media query logic for grid and caption is mostly handled by Tailwind classes, 
+       but the Grid definition itself needs to change */
+    @media only screen and (max-width: 1150px) {
+        .portfolio__grid-container {
+            display: grid;
+            grid-template: repeat(4, 450px) / repeat(1, 100%);
+            grid-template-areas:
+                "abstrakct"
+                "coffetopia"
+                "blog"
+                "sartorial";
+            height: auto;
+        }
+
+        #blog-card img {
+            padding: 2vh;
+            left: 0% !important; /* Override inline style */
+            max-width: 400px !important;
+            border-radius: var(--radius-main);
+        }
+
+        .portfolio__card-caption {
+            position: static;
+            /* visibility and opacity handled by tailwind classes */
+            transform: translateY(-100%);
+            height: 30%;
+            width: 80%;
+            max-width: 90%; /* max-w-640px applies this but strictly it's width 90% */
+            margin: 0 auto;
+            padding: 1vh;
+            background-color: #101418d0;
+            box-shadow: 0px 2px 4px #101418d0;
+        }
+    }
+    
+    @media only screen and (max-width: 640px) {
+        .portfolio__card-caption {
+            width: 90%;
+        }
+    }
+</style>
