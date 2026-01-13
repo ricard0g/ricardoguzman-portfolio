@@ -2,7 +2,7 @@
 ---
 <header class="flex justify-center w-full">
     <!-- Desktop Navbar -->
-    <nav class="hidden min-[1151px]:block fixed top-[2.5vh] w-[40%] bg-accent py-[1vh] px-[1.5vw] rounded-[50px] shadow-m z-10">
+    <nav class="hidden min-[1151px]:block fixed top-[2.5vh] w-[40%] bg-accent pt-[1vh] pb-[1.25vh] px-[1.5vw] rounded-[50px] shadow-m z-10">
         <ul class="relative flex flex-row flex-nowrap justify-between items-center list-none p-0">
             <li>
                 <a href="/" class="logo font-display no-underline text-text-dark-bg">
@@ -12,13 +12,13 @@
             <li class="nav__links-container">
                 <ul class="nav__inner-list absolute top-0 left-1/2 -translate-x-1/2 w-[70%] flex justify-center content-center list-none p-0">
                     <li>
-                        <a href="#about-section">Sobre Mi</a>
+                        <a class="nav__inner-link" href="#about-section">Sobre Mi</a>
                     </li>
                     <li>
-                        <a href="#portfolio-section">Portfolio</a>
+                        <a class="nav__inner-link" href="#portfolio-section">Portfolio</a>
                     </li>
                     <li>
-                        <a href="#contact-section">Contacto</a>
+                        <a class="nav__inner-link" href="#contact-section">Contacto</a>
                     </li>
                 </ul>
             </li>
@@ -71,11 +71,16 @@
 </header>
 
 <script>
+    import { initDesktopMenu } from '../scripts/desktopMenu';
     import { initMobileMenu } from '../scripts/mobileMenu';
 
-    document.addEventListener('DOMContentLoaded', () => {
-        initMobileMenu();
-    });
+    if (screen.availWidth < 1151) {
+        document.addEventListener('DOMContentLoaded', () => {
+            initMobileMenu();
+        });
+    } else {
+        document.addEventListener('DOMContentLoaded', () => initDesktopMenu());
+    }
 </script>
 
 <style>
