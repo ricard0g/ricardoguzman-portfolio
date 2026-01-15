@@ -1,112 +1,166 @@
 ---
+
 ---
+
 <header class="flex justify-center w-full">
-    <!-- Desktop Navbar -->
-    <nav class="hidden min-[1151px]:block fixed top-[2.5vh] w-[40%] bg-accent pt-[1vh] pb-[1.25vh] px-[1.5vw] rounded-[50px] shadow-m z-10">
-        <ul class="relative flex flex-row flex-nowrap justify-between items-center list-none p-0">
-            <li>
-                <a href="/" class="logo font-display no-underline text-text-dark-bg">
-                    <span>RICARDO<sup>®</sup></span>
-                </a>
-            </li>
-            <li class="nav__links-container">
-                <ul class="nav__inner-list absolute top-0 left-1/2 -translate-x-1/2 w-[70%] flex justify-center content-center list-none p-0">
-                    <li>
-                        <a class="nav__inner-link" href="#about-section">Sobre Mi</a>
-                    </li>
-                    <li>
-                        <a class="nav__inner-link" href="#portfolio-section">Portfolio</a>
-                    </li>
-                    <li>
-                        <a class="nav__inner-link" href="#contact-section">Contacto</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="https://github.com/ricard0g">
-                    <svg class="svg stroke-bg-main" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                        <path d="M9 18c-4.51 2-5-2-7-2" />
-                    </svg>
-                </a>
-            </li>
-        </ul>
-    </nav>
+	<!-- Desktop Navbar -->
+	<nav
+		class="hidden min-[1151px]:block fixed top-[2.5vh] w-[40%] bg-accent pt-[1.25vh] pb-[1.25vh] px-[1.5vw] rounded-[50px] shadow-m z-10"
+	>
+		<ul
+			class="relative flex flex-row flex-nowrap justify-between items-center list-none p-0"
+		>
+			<li>
+				<a
+					href="/"
+					class="logo font-display no-underline text-text-dark-bg"
+				>
+					<span>RICARDO<sup>®</sup></span>
+				</a>
+			</li>
+			<li class="nav__links-container">
+				<ul
+					class="nav__inner-list absolute top-0 left-1/2 -translate-x-1/2 w-[70%] flex justify-center content-center list-none p-0"
+				>
+					<li>
+						<a class="nav__inner-link" href="#about-section"
+							>Sobre Mi</a
+						>
+					</li>
+					<li>
+						<a class="nav__inner-link" href="#portfolio-section"
+							>Portfolio</a
+						>
+					</li>
+					<li>
+						<a class="nav__inner-link" href="#contact-section"
+							>Contacto</a
+						>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="https://blog.ricardoguzman.dev" title="Visitar Blog" aria-label="Visitar el Blog de Ricardo" target="_blank">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="#ddd"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="lucide lucide-book-open-icon lucide-book-open"
+						><path d="M12 7v14"></path><path
+							d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+						></path></svg
+					>
+				</a>
+			</li>
+		</ul>
+	</nav>
 
-    <!-- Mobile Navbar -->
-    <nav class="nav-mobile__container block min-[1151px]:hidden fixed top-[2vh] w-[60%] max-[768px]:w-[80%] max-[425px]:w-[95%] bg-accent py-[0.75rem] px-[1.5rem] rounded-[50px] shadow-m z-10">
-        <ul class="relative flex flex-row flex-nowrap justify-between items-center list-none p-0">
-            <li>
-                <a href="/" class="logo font-display no-underline text-text-dark-bg">
-                    <span>RICARDO<sup>®</sup></span>
-                </a>
-            </li>
-            <li class="flex items-center justify-center">
-                <button id="burger-btn" type="button" class="cursor-pointer text-text-dark-bg bg-transparent border-none p-0">
-                    <svg class="svg stroke-bg-main" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M4 5h16" />
-                        <path d="M4 12h16" />
-                        <path d="M4 19h16" />
-                    </svg>
-                </button>
+	<!-- Mobile Navbar -->
+	<nav
+		class="nav-mobile__container block min-[1151px]:hidden fixed top-[2vh] w-[60%] max-[768px]:w-[80%] max-[425px]:w-[95%] bg-accent py-[0.75rem] px-[1.5rem] rounded-[50px] shadow-m z-10"
+	>
+		<ul
+			class="relative flex flex-row flex-nowrap justify-between items-center list-none p-0"
+		>
+			<li>
+				<a
+					href="/"
+					class="logo font-display no-underline text-text-dark-bg"
+				>
+					<span>RICARDO<sup>®</sup></span>
+				</a>
+			</li>
+			<li class="flex items-center justify-center">
+				<button
+					id="burger-btn"
+					type="button"
+					class="cursor-pointer text-text-dark-bg bg-transparent border-none p-0"
+				>
+					<svg
+						class="svg stroke-bg-main"
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<path d="M4 5h16"></path>
+						<path d="M4 12h16"></path>
+						<path d="M4 19h16"></path>
+					</svg>
+				</button>
 
-                <ul id="nav-mobile__menu" class="nav-mobile__menu hidden absolute top-[2.75rem] right-1/2 translate-x-1/2 w-[70%] bg-accent rounded-main p-[1.5vh] shadow-m list-none z-20">
-                    <li>
-                        <a href="#about-section">Sobre Mi</a>
-                    </li>
-                    <li>
-                        <a href="#portfolio-section">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="#contact-section">Contacto</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
+				<ul
+					id="nav-mobile__menu"
+					class="nav-mobile__menu hidden absolute top-[2.75rem] right-1/2 translate-x-1/2 w-[70%] bg-accent rounded-main p-[1.5vh] shadow-m list-none z-20"
+				>
+					<li>
+						<a href="#about-section">Sobre Mi</a>
+					</li>
+					<li>
+						<a href="#portfolio-section">Portfolio</a>
+					</li>
+					<li>
+						<a href="#contact-section">Contacto</a>
+					</li>
+					<li>
+						<a href="https://blog.ricardoguzman.dev/">Blog</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
 </header>
 
 <script>
-    import { initDesktopMenu } from '../scripts/desktopMenu';
-    import { initMobileMenu } from '../scripts/mobileMenu';
+	import { initDesktopMenu } from "../scripts/desktopMenu";
+	import { initMobileMenu } from "../scripts/mobileMenu";
 
-    if (screen.availWidth < 1151) {
-        document.addEventListener('DOMContentLoaded', () => {
-            initMobileMenu();
-        });
-    } else {
-        document.addEventListener('DOMContentLoaded', () => initDesktopMenu());
-    }
+	if (screen.availWidth < 1151) {
+		document.addEventListener("DOMContentLoaded", () => {
+			initMobileMenu();
+		});
+	} else {
+		document.addEventListener("DOMContentLoaded", () => initDesktopMenu());
+	}
 </script>
 
 <style>
-    /* Scoped styles for specifics that are hard to utilitize cleanly */
-    .nav__inner-list li, .nav-mobile__menu li {
-        font-size: 0.875rem;
-        padding: 0.3rem 0.6rem;
-        margin-left: 1rem;
-        color: var(--color-text-dark-bg);
-        border-radius: var(--radius-main);
-        transition: all 100ms linear;
-    }
-    
-    .nav-mobile__menu li {
-        margin-left: 0; /* Reset for mobile */
-    }
+	/* Scoped styles for specifics that are hard to utilitize cleanly */
+	.nav__inner-list li,
+	.nav-mobile__menu li {
+		font-size: 0.875rem;
+		padding: 0.3rem 0.6rem;
+		margin-left: 1rem;
+		color: var(--color-text-dark-bg);
+		border-radius: var(--radius-main);
+		transition: all 100ms linear;
+	}
 
-    .nav__inner-list li:hover, .nav-mobile__menu li:hover {
-        background-color: var(--color-accent-hover);
-    }
-    
-    .nav-mobile__menu > li > a {
-        display: block;
-        width: fit-content;
-        margin: 0 auto;
-        color: var(--color-text-dark-bg);
-        text-align: center;
-    }
+	.nav-mobile__menu li {
+		margin-left: 0; /* Reset for mobile */
+	}
+
+	.nav__inner-list li:hover,
+	.nav-mobile__menu li:hover {
+		background-color: var(--color-accent-hover);
+	}
+
+	.nav-mobile__menu > li > a {
+		display: block;
+		width: fit-content;
+		margin: 0 auto;
+		color: var(--color-text-dark-bg);
+		text-align: center;
+	}
 </style>
