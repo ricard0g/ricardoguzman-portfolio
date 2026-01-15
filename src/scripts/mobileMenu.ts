@@ -10,7 +10,7 @@ export function initMobileMenu(): void {
     });
 
     // Close menu and smooth scroll when clicking on a link
-    const menuLinks = mobileMenu.querySelectorAll('a');
+    const menuLinks = mobileMenu.querySelectorAll('a.nav-mobile__inner-link');
     menuLinks.forEach(link => {
         link.addEventListener('click', (event) => {
             event.preventDefault();
