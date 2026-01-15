@@ -1,0 +1,9 @@
+{
+	"redirects": [
+		{
+			"source": "/blog",
+			"destination": "https://blog.ricardoguzman.dev",
+			"permanent": true
+		}
+	]
+}
