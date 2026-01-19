@@ -1,5 +1,21 @@
 ---
+interface Props {
+	aboutLink: {
+		text: string;
+	};
+	portfolioLink: {
+		text: string;
+	};
+	contactLink: {
+		text: string;
+	};
+	blogLink: {
+		title: string;
+		ariaLabel: string;
+	};
+}
 
+const { aboutLink, portfolioLink, contactLink, blogLink } = Astro.props;
 ---
 
 <header class="flex justify-center w-full">
@@ -24,23 +40,28 @@
 				>
 					<li>
 						<a class="nav__inner-link" href="#about-section"
-							>Sobre Mi</a
+							>{aboutLink.text}</a
 						>
 					</li>
 					<li>
 						<a class="nav__inner-link" href="#portfolio-section"
-							>Portfolio</a
+							>{portfolioLink.text}</a
 						>
 					</li>
 					<li>
 						<a class="nav__inner-link" href="#contact-section"
-							>Contacto</a
+							>{contactLink.text}</a
 						>
 					</li>
 				</ul>
 			</li>
 			<li>
-				<a href="https://blog.ricardoguzman.dev" title="Visitar Blog" aria-label="Visitar el Blog de Ricardo" target="_blank">
+				<a
+					href="https://blog.ricardoguzman.dev"
+					title={blogLink.title}
+					aria-label={blogLink.ariaLabel}
+					target="_blank"
+				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="24"
@@ -105,16 +126,24 @@
 					class="nav-mobile__menu hidden absolute top-[2.75rem] right-1/2 translate-x-1/2 w-[70%] bg-accent rounded-main p-[1.5vh] shadow-m list-none z-20"
 				>
 					<li>
-						<a class="nav-mobile__inner-link" href="#about-section">Sobre Mi</a>
+						<a class="nav-mobile__inner-link" href="#about-section"
+							>{aboutLink.text}</a
+						>
 					</li>
 					<li>
-						<a class="nav-mobile__inner-link" href="#portfolio-section">Portfolio</a>
+						<a
+							class="nav-mobile__inner-link"
+							href="#portfolio-section">{portfolioLink.text}</a
+						>
 					</li>
 					<li>
-						<a class="nav-mobile__inner-link" href="#contact-section">Contacto</a>
+						<a
+							class="nav-mobile__inner-link"
+							href="#contact-section">{contactLink.text}</a
+						>
 					</li>
 					<li>
-						<a href="https://blog.ricardoguzman.dev/">Blog</a>
+						<a href="https://blog.ricardoguzman.dev/" title={blogLink.title} aria-label={blogLink.ariaLabel}>Blog</a>
 					</li>
 				</ul>
 			</li>

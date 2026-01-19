@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import About from '../../components/About.astro';
+import Portfolio from '../../components/Portfolio.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+
+import { translations } from '../../i18/ui';
+
+const t = translations.en;
+---
+
+<Layout>
+    <Header
+        aboutLink={t.header.aboutLink}
+        portfolioLink={t.header.portfolioLink}
+        contactLink={t.header.contactLink}
+        blogLink={t.header.blogLink}
+    />
+    <main>
+        <Hero />
+        <About />
+        <Portfolio />
+        <Contact />
+    </main>
+    <Footer />
+</Layout>
