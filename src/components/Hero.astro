@@ -1,62 +1,111 @@
 ---
-import topLeft from '../assets/top-left-corner.png';
-import topRight from '../assets/top-right-corner.png';
-import bottomLeft from '../assets/bottom-left-corner.png';
-import bottomRight from '../assets/bottom-right-corner.png';
-import bgImage from '../assets/pexels-adrien-olichon-1257089-2387793.webp';
+import topLeft from "../assets/top-left-corner.png";
+import topRight from "../assets/top-right-corner.png";
+import bottomLeft from "../assets/bottom-left-corner.png";
+import bottomRight from "../assets/bottom-right-corner.png";
+import bgImage from "../assets/pexels-adrien-olichon-1257089-2387793.webp";
+
+interface Props {
+	subheading: string;
+	description: string;
+}
+
+const { subheading, description } = Astro.props;
 ---
 
-<section class="hero__container relative top-[6vh] max-[1000px]:top-[10vh] flex justify-center max-[1200px]:items-start items-center w-full h-[70vh] lg:h-[85vh]">
-    <div 
-        class="hero__wrapper flex flex-col justify-between items-center w-[70%] max-[1200px]:w-[80%] max-[768px]:w-[95%] h-[80%] max-[768px]:h-[90%] p-[4vh] max-[768px]:p-[2vh] rounded-main shadow-[2px_2px_4px_2px_var(--color-accent)] bg-cover bg-center"
-        style={`background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${bgImage.src}');`}
-    >
-        <div class="hero__corners-container flex justify-between items-center w-full">
-            <div class="hero__corner-container w-[40px] h-auto">
-                <img class="hero__corner-image max-w-full h-auto" src={topLeft.src} alt="Top left corner illustration" />
-            </div>
-            <div class="hero__corner-container w-[40px] h-auto">
-                <img class="hero__corner-image max-w-full h-auto" src={topRight.src} alt="Top right corner illustration" />
-            </div>
-        </div>
-        
-        <div class="hero__content-container flex flex-col justify-top items-center w-full h-full max-[1000px]:gap-y-[3vh]">
-            <div id="content-left" class="flex w-[90%] mt-[4vh] text-left">
-                <div class="hero__blinking-point relative w-[10px] h-[10px] bg-bg-main rounded-[50%] opacity-0"></div>
-                <h1 class="main-heading text-[4.75rem] max-[1400px]:text-[4rem] max-[1000px]:text-[3.5rem] max-[640px]:text-[2.75rem] font-display font-medium uppercase text-text-dark-bg">
-                    <span class="block">Ricardo</span>
-                    <span class="block">Guzman</span>
-                </h1>
-            </div>
-            <div id="content-right" class="flex flex-col items-end w-[90%] text-right">
-                <h2 class="font-display font-normal text-[2.625rem] max-[1400px]:text-[2rem] max-[1000px]:text-[1.75rem] max-[640px]:text-[1.5rem] tracking-[2px] text-text-dark-bg">
-                    Desarrollador Web
-                </h2>
-                <p class="max-w-[40%] max-[1000px]:max-w-[60%] max-[768px]:max-w-[80%] text-right text-[1.125rem] max-[1400px]:text-[1rem] font-light text-text-dark-bg opacity-80">
-                    Transformo diseños en experiencias digitales a través del código.
-                </p>
-            </div>
-        </div>
+<section
+	class="hero__container relative top-[6vh] max-[1000px]:top-[10vh] flex justify-center max-[1200px]:items-start items-center w-full h-[70vh] lg:h-[85vh]"
+>
+	<div
+		class="hero__wrapper flex flex-col justify-between items-center w-[70%] max-[1200px]:w-[80%] max-[768px]:w-[95%] h-[80%] max-[768px]:h-[90%] p-[4vh] max-[768px]:p-[2vh] rounded-main shadow-[2px_2px_4px_2px_var(--color-accent)] bg-cover bg-center"
+		style={`background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${bgImage.src}');`}
+	>
+		<div
+			class="hero__corners-container flex justify-between items-center w-full"
+		>
+			<div class="hero__corner-container w-[40px] h-auto">
+				<img
+					class="hero__corner-image max-w-full h-auto"
+					src={topLeft.src}
+					alt="Top left corner illustration"
+				/>
+			</div>
+			<div class="hero__corner-container w-[40px] h-auto">
+				<img
+					class="hero__corner-image max-w-full h-auto"
+					src={topRight.src}
+					alt="Top right corner illustration"
+				/>
+			</div>
+		</div>
 
-        <div class="hero__corners-container flex justify-between items-center w-full">
-            <div class="hero__corner-container w-[40px] h-auto">
-                <img class="hero__corner-image max-w-full h-auto" src={bottomLeft.src} alt="Bottom left corner illustration" />
-            </div>
-            <div class="hero__corner-container w-[40px] h-auto">
-                <img class="hero__corner-image max-w-full h-auto" src={bottomRight.src} alt="Bottom right corner illustration" />
-            </div>
-        </div>
-    </div>
+		<div
+			class="hero__content-container flex flex-col justify-top items-center w-full h-full max-[1000px]:gap-y-[3vh]"
+		>
+			<div id="content-left" class="flex w-[90%] mt-[4vh] text-left">
+				<div
+					class="hero__blinking-point relative w-[10px] h-[10px] bg-bg-main rounded-[50%] opacity-0"
+				>
+				</div>
+				<h1
+					class="main-heading text-[4.75rem] max-[1400px]:text-[4rem] max-[1000px]:text-[3.5rem] max-[640px]:text-[2.75rem] font-display font-medium uppercase text-text-dark-bg"
+				>
+					<span class="block">Ricardo</span>
+					<span class="block">Guzman</span>
+				</h1>
+			</div>
+			<div
+				id="content-right"
+				class="flex flex-col items-end w-[90%] text-right"
+			>
+				<h2
+					class="font-display font-normal text-[2.625rem] max-[1400px]:text-[2rem] max-[1000px]:text-[1.75rem] max-[640px]:text-[1.5rem] tracking-[2px] text-text-dark-bg"
+				>
+					{subheading}
+				</h2>
+				<p
+					class="max-w-[40%] max-[1000px]:max-w-[60%] max-[768px]:max-w-[80%] text-right text-[1.125rem] max-[1400px]:text-[1rem] font-light text-text-dark-bg opacity-80"
+				>
+					{description}
+				</p>
+			</div>
+		</div>
+
+		<div
+			class="hero__corners-container flex justify-between items-center w-full"
+		>
+			<div class="hero__corner-container w-[40px] h-auto">
+				<img
+					class="hero__corner-image max-w-full h-auto"
+					src={bottomLeft.src}
+					alt="Bottom left corner illustration"
+				/>
+			</div>
+			<div class="hero__corner-container w-[40px] h-auto">
+				<img
+					class="hero__corner-image max-w-full h-auto"
+					src={bottomRight.src}
+					alt="Bottom right corner illustration"
+				/>
+			</div>
+		</div>
+	</div>
 </section>
 
 <style>
-    .hero__blinking-point {
-        animation: 2s ease-in blinking infinite;
-    }
+	.hero__blinking-point {
+		animation: 2s ease-in blinking infinite;
+	}
 
-    @keyframes blinking {
-        0% { opacity: 0; }
-        50% { opacity: 1; }
-        100% { opacity: 0; }
-    }
+	@keyframes blinking {
+		0% {
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
 </style>
