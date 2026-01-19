@@ -84,6 +84,20 @@ export const translations = {
 				},
 			},
 		},
+		contact: {
+			badge: "Contacto",
+			heading: "Ponte en Contacto",
+			headingAccent: "Conmigo",
+			form: {
+				nameLabel: "Tu Nombre Completo",
+				namePlaceholder: "Juan Ramos...",
+				emailLabel: "Correo Electrónico",
+				emailPlaceholder: "juan@gmail.com...",
+				messageLabel: "Tu Mensaje",
+				messagePlaceholder: "Escribe lo que quieras aqui...",
+				submitButton: "Enviar",
+			},
+		},
 	},
 	en: {
 		header: {
@@ -162,6 +176,20 @@ export const translations = {
 					passwordNote: "Password: shorto",
 					imageAlt: "Sartorial project online store home screen",
 				},
+			},
+		},
+		contact: {
+			badge: "Contact",
+			heading: "Get in Touch",
+			headingAccent: "With Me",
+			form: {
+				nameLabel: "Your Full Name",
+				namePlaceholder: "John Smith...",
+				emailLabel: "Email Address",
+				emailPlaceholder: "john@gmail.com...",
+				messageLabel: "Your Message",
+				messagePlaceholder: "Write whatever you want here...",
+				submitButton: "Send",
 			},
 		},
 	},
