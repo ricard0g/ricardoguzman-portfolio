@@ -8,16 +8,17 @@ import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 
 import { translations } from "../i18/ui";
+import FloatingBlogLink from "../components/FloatingBlogLink.astro";
 
 const t = translations.es;
 ---
 
 <Layout>
+	<FloatingBlogLink blogLink={t.header.blogLink} />
 	<Header
 		aboutLink={t.header.aboutLink}
 		portfolioLink={t.header.portfolioLink}
 		contactLink={t.header.contactLink}
-		blogLink={t.header.blogLink}
 	/>
 	<main>
 		<Hero subheading={t.hero.subheading} description={t.hero.description} />

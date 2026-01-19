@@ -9,13 +9,13 @@ interface Props {
 	contactLink: {
 		text: string;
 	};
-	blogLink: {
-		title: string;
-		ariaLabel: string;
-	};
 }
 
-const { aboutLink, portfolioLink, contactLink, blogLink } = Astro.props;
+const { aboutLink, portfolioLink, contactLink } = Astro.props;
+
+// Detect current language from URL
+const currentPath = Astro.url.pathname;
+const currentLang = currentPath.startsWith('/en') ? 'en' : 'es';
 ---
 
 <header class="flex justify-center w-full">
@@ -55,28 +55,20 @@ const { aboutLink, portfolioLink, contactLink, blogLink } = Astro.props;
 					</li>
 				</ul>
 			</li>
-			<li>
+			<li class="flex gap-0.25">
 				<a
-					href="https://blog.ricardoguzman.dev"
-					title={blogLink.title}
-					aria-label={blogLink.ariaLabel}
-					target="_blank"
+					href="/"
+					class={`lang-btn ${currentLang === 'es' ? 'lang-btn-active' : ''}`}
+					aria-label="Español"
 				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="#ddd"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						class="lucide lucide-book-open-icon lucide-book-open"
-						><path d="M12 7v14"></path><path
-							d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
-						></path></svg
-					>
+					ES
+				</a>
+				<a
+					href="/en"
+					class={`lang-btn ${currentLang === 'en' ? 'lang-btn-active' : ''}`}
+					aria-label="English"
+				>
+					EN
 				</a>
 			</li>
 		</ul>
@@ -142,8 +134,21 @@ const { aboutLink, portfolioLink, contactLink, blogLink } = Astro.props;
 							href="#contact-section">{contactLink.text}</a
 						>
 					</li>
-					<li>
-						<a href="https://blog.ricardoguzman.dev/" title={blogLink.title} aria-label={blogLink.ariaLabel}>Blog</a>
+					<li class="flex gap-2 justify-center">
+						<a
+							href="/"
+							class={`lang-btn ${currentLang === 'es' ? 'lang-btn-active' : ''}`}
+							aria-label="Español"
+						>
+							ES
+						</a>
+						<a
+							href="/en"
+							class={`lang-btn ${currentLang === 'en' ? 'lang-btn-active' : ''}`}
+							aria-label="English"
+						>
+							EN
+						</a>
 					</li>
 				</ul>
 			</li>
@@ -191,5 +196,26 @@ const { aboutLink, portfolioLink, contactLink, blogLink } = Astro.props;
 		margin: 0 auto;
 		color: var(--color-text-dark-bg);
 		text-align: center;
+	}
+
+	.lang-btn {
+		padding: 0.375rem 0.75rem;
+		color: var(--color-text-dark-bg);
+		text-decoration: none;
+		font-size: 0.875rem;
+		font-weight: 600;
+		border-radius: var(--radius-main);
+		transition: all 100ms linear;
+		opacity: 0.6;
+	}
+
+	.lang-btn:hover {
+		opacity: 1;
+		background-color: var(--color-accent-hover);
+	}
+
+	.lang-btn-active {
+		opacity: 1;
+		background-color: var(--color-accent-hover);
 	}
 </style>

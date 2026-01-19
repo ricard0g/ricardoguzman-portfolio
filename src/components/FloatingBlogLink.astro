@@ -1,0 +1,40 @@
+---
+interface Props {
+	blogLink: {
+		title: string;
+		ariaLabel: string;
+	};
+}
+
+const { blogLink } = Astro.props;
+---
+
+<a
+    id="floating-blog-link"
+	class="fixed right-4 bottom-4 lg:right-10 lg:bottom-10 p-5 bg-accent rounded-full z-10"
+	href="https://blog.ricardoguzman.dev"
+	title={blogLink.title}
+	aria-label={blogLink.ariaLabel}
+	target="_blank"
+>
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="24"
+		height="24"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="#ddd"
+		stroke-width="2"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		class="lucide lucide-book-open-icon lucide-book-open"
+		><path d="M12 7v14"></path><path
+			d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+		></path></svg
+	>
+</a>
+
+    
+<script>
+    import "../scripts/floatingBlogLink"
+</script>
