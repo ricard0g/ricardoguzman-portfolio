@@ -4,6 +4,34 @@ import coffetopiaImg from "../assets/coffetopia_screenshot.webp";
 import portfolioImg from "../assets/portfolio-screenshot-modified.webp";
 import sartorialImg from "../assets/sartorial_store_screenshot.webp";
 import expensitrackImg from "../assets/expensitrack_screenshot.webp";
+
+interface projectProps {
+	title: string;
+	description: string;
+	passwordNote?: string;
+	imageAlt: string;
+}
+
+interface Props {
+	badge: string;
+	heading: string;
+	headingAccent: string;
+	buttons: {
+		visit: string;
+		github: string;
+	};
+	projects: {
+		expensitrack: projectProps;
+		abstrakct: projectProps;
+		coffetopia: projectProps;
+		blog: projectProps;
+		sartorial: projectProps;
+	};
+}
+
+const { badge, heading, headingAccent, buttons, projects } = Astro.props;
+
+const { expensitrack, abstrakct, coffetopia, blog, sartorial } = projects;
 ---
 
 <section
@@ -13,9 +41,10 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 	<div
 		class="portfolio__wrapper flex flex-col justify-center items-center gap-y-[1.5vh] w-[60%] max-[1250px]:w-[60%] max-[640px]:w-[95%] h-auto text-center"
 	>
-		<span class="badge">Portfolio</span>
+		<span class="badge">{badge}</span>
 		<h2 class="section-heading">
-			Mis <span class="accent-text">Proyectos</span>
+			{heading}
+			<span class="accent-text">{headingAccent}</span>
 		</h2>
 
 		<div
@@ -32,7 +61,7 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 					<img
 						class="portfolio__big-card-img relative left-[5%] top-[2vh] min-w-[600px] max-[1150px]:left-0 max-[1150px]:min-w-[500px] max-[1150px]:max-w-[700px]"
 						src={expensitrackImg.src}
-						alt="Proyecto Expensitrack pantalla inicial "
+						alt={expensitrack.imageAlt}
 					/>
 					<figcaption
 						class="portfolio__card-caption group-hover:visible group-hover:opacity-100 max-[1150px]:visible max-[1150px]:opacity-100"
@@ -40,15 +69,12 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 						<h2
 							class="text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-normal"
 						>
-							Expensitrack
+							{expensitrack.title}
 						</h2>
 						<p
 							class="text-[0.95rem] max-[640px]:text-[0.85rem] font-light"
 						>
-							App fullstack de gestión de gastos con gráficas para
-							un usuario ficticio. Incluye registros CRUD y
-							seguridad implementada vía impementacion de un Proxy
-							Server.
+							{expensitrack.description}
 						</p>
 						<div
 							class="flex justify-center items-center gap-x-[8px] gap-y-[6px] flex-wrap"
@@ -97,13 +123,13 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 								href="https://expensitrack-web.vercel.app/"
 								target="_blank"
 								class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m"
-								>Visitar</a
+								>{buttons.visit}</a
 							>
 							<a
 								href="https://github.com/ricard0g/expensitrack-web"
 								target="_blank"
 								class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m"
-								>GitHub</a
+								>{buttons.github}</a
 							>
 						</div>
 					</figcaption>
@@ -121,7 +147,7 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 					<img
 						class="portfolio__big-card-img relative left-[5%] top-[2vh] min-w-[600px] max-[1150px]:left-0 max-[1150px]:min-w-[500px] max-[1150px]:max-w-[700px]"
 						src={abstrakctImg.src}
-						alt="Proyecto Abstrakct pantalla inicial tienda online"
+						alt={abstrakct.imageAlt}
 					/>
 					<figcaption
 						class="portfolio__card-caption group-hover:visible group-hover:opacity-100 max-[1150px]:visible max-[1150px]:opacity-100"
@@ -129,14 +155,12 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 						<h2
 							class="text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-normal"
 						>
-							Absktrakct
+							{abstrakct.title}
 						</h2>
 						<p
 							class="text-[0.95rem] max-[640px]:text-[0.85rem] font-light"
 						>
-							Ecommerce artístico que funciona como una galería
-							construido con Liquid, TS, Hydrogen, Remix y
-							TailwindCSS.
+							{abstrakct.description}
 						</p>
 						<div
 							class="flex justify-center items-center gap-x-[8px] gap-y-[6px] flex-wrap"
@@ -169,13 +193,13 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 								href="https://abstrakct.netlify.app/"
 								target="_blank"
 								class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m"
-								>Visitar</a
+								>{buttons.visit}</a
 							>
 							<a
 								href="https://github.com/ricard0g/abstrakct"
 								target="_blank"
 								class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m"
-								>GitHub</a
+								>{buttons.github}</a
 							>
 						</div>
 					</figcaption>
@@ -193,7 +217,7 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 					<img
 						class="portfolio__small-card-img relative left-[2%] top-[2vh] min-w-[750px] rounded-[5px] max-[1150px]:left-0 max-[1150px]:min-w-[500px] max-[1150px]:max-w-[700px]"
 						src={coffetopiaImg.src}
-						alt="Proyecto Coffetopia pantalla inicial tienda online"
+						alt={coffetopia.imageAlt}
 					/>
 					<figcaption
 						class="portfolio__card-caption group-hover:visible group-hover:opacity-100 max-[1150px]:visible max-[1150px]:opacity-100"
@@ -201,14 +225,12 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 						<h2
 							class="text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-normal"
 						>
-							Coffetopia
+							{coffetopia.title}
 						</h2>
 						<p
 							class="text-[0.95rem] max-[640px]:text-[0.85rem] font-light"
 						>
-							Tienda con sección "Cart Booster" para disparar
-							conversiones y compras. Hecho con Liquid, TS y
-							Preact. <strong>Contraseña: shorto</strong>
+							{coffetopia.description} <strong>{coffetopia.passwordNote}</strong>
 						</p>
 						<div
 							class="flex justify-center items-center gap-x-[8px] gap-y-[6px] flex-wrap"
@@ -237,13 +259,13 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 								href="https://coffeee-topia.myshopify.com/password"
 								target="_blank"
 								class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m"
-								>Visitar</a
+								>{buttons.visit}</a
 							>
 							<a
 								href="https://github.com/ricard0g/coffeetopia"
 								target="_blank"
 								class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m"
-								>GitHub</a
+								>{buttons.github}</a
 							>
 						</div>
 					</figcaption>
@@ -262,7 +284,7 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 						<img
 							class="portfolio__small-card-img relative left-[2%] top-[2vh] min-w-[550px] rounded-[5px] max-[1150px]:left-0 max-[1150px]:min-w-[500px] max-[1150px]:max-w-[700px]"
 							src={portfolioImg.src}
-							alt="Blog Personal pagina web pantalla inicial"
+							alt={blog.imageAlt}
 							style="top: 3vh; left: 10%;"
 						/>
 						<!-- Note: inline style for slight adjustment overridden by media query logic partially, keeping inline as source had specific rule #blog-card img -->
@@ -274,13 +296,12 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 						<h2
 							class="text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-normal"
 						>
-							Blog Personal
+						{blog.title}
 						</h2>
 						<p
 							class="text-[0.95rem] max-[640px]:text-[0.85rem] font-light"
 						>
-							Blog personal donde escribo sobre distintas cosas.
-							Creado con Astro.
+						{blog.description}
 						</p>
 						<div
 							class="flex justify-center items-center gap-x-[8px] gap-y-[6px] flex-wrap"
@@ -297,13 +318,13 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 								href="https://blog.ricardoguzman.dev/"
 								target="_blank"
 								class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m"
-								>Visitar</a
+								>{buttons.visit}</a
 							>
 							<a
 								href="https://github.com/ricard0g/ricardoguzman-blog"
 								target="_blank"
 								class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m"
-								>GitHub</a
+								>{buttons.github}</a
 							>
 						</div>
 					</figcaption>
@@ -321,7 +342,7 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 					<img
 						class="portfolio__big-card-img relative left-[5%] top-[2vh] min-w-[600px] max-[1150px]:left-0 max-[1150px]:min-w-[500px] max-[1150px]:max-w-[700px]"
 						src={sartorialImg.src}
-						alt="Proyecto Sartorial pantalla inicial tienda online"
+						alt={sartorial.imageAlt}
 					/>
 					<figcaption
 						class="portfolio__card-caption group-hover:visible group-hover:opacity-100 max-[1150px]:visible max-[1150px]:opacity-100"
@@ -329,15 +350,13 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 						<h2
 							class="text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-normal"
 						>
-							Sartorial Store
+						{sartorial.title}
 						</h2>
 						<p
 							class="text-[0.95rem] max-[640px]:text-[0.85rem] font-light"
 						>
-							Tienda Shopify construida completamente desde cero
-							usando Liquid. Tambien se usaron todas las APIs de
-							los Temas Shopify. <strong
-								>Contraseña: shorto</strong
+							{sartorial.description} <strong
+								>{sartorial.passwordNote}</strong
 							>
 						</p>
 						<div
@@ -359,13 +378,13 @@ import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 								href="https://sartorial-store.myshopify.com/password"
 								target="_blank"
 								class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m"
-								>Visitar</a
+								>{buttons.visit}</a
 							>
 							<a
 								href="https://github.com/ricard0g/sartorial-store"
 								target="_blank"
 								class="inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m"
-								>GitHub</a
+								>{buttons.github}</a
 							>
 						</div>
 					</figcaption>
