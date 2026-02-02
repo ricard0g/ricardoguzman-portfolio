@@ -1,4 +1,6 @@
 ---
+import { actions } from "astro:actions";
+
 interface Props {
 	badge: string;
 	heading: string;
@@ -16,7 +18,15 @@ interface Props {
 
 const { badge, heading, headingAccent, form } = Astro.props;
 
-const { nameLabel, namePlaceholder, emailLabel, emailPlaceholder, messageLabel, messagePlaceholder, submitButton } = form;
+const {
+	nameLabel,
+	namePlaceholder,
+	emailLabel,
+	emailPlaceholder,
+	messageLabel,
+	messagePlaceholder,
+	submitButton,
+} = form;
 ---
 
 <section
@@ -28,10 +38,11 @@ const { nameLabel, namePlaceholder, emailLabel, emailPlaceholder, messageLabel, 
 	>
 		<span class="badge">{badge}</span>
 		<h2 class="section-heading">
-			{heading} <span class="accent-text">{headingAccent}</span>
+			{heading}
+			<span class="accent-text">{headingAccent}</span>
 		</h2>
 		<form
-			action="#"
+			action={actions.send}
 			method="POST"
 			enctype="application/x-www-form-urlencoded"
 			class="flex flex-col justify-center content-start gap-y-[2vh] w-[75%] max-[768px]:w-full h-full p-[5vh] bg-white rounded-main shadow-[inset_0_-4px_7px_#00000030,inset_0_4px_7px_#00000030]"
@@ -40,13 +51,13 @@ const { nameLabel, namePlaceholder, emailLabel, emailPlaceholder, messageLabel, 
 				class="contacto__top-input-groups flex flex-col lg:flex-row justify-center items-center gap-x-[1vw]"
 			>
 				<div class="contacto__input-group w-full lg:w-[50%] mb-3">
-					<label for="nombre" class="block text-left mb-[1vh]"
+					<label for="name" class="block text-left mb-[1vh]"
 						>{nameLabel}</label
 					>
 					<input
 						type="text"
-						name="nombre"
-						id="nombre"
+						name="name"
+						id="name"
 						placeholder={namePlaceholder}
 						required
 						class="block text-left w-full p-[1rem] bg-bg-main border-none rounded-main text-[0.9rem] shadow-m focus:outline-none placeholder:text-[0.9rem]"
@@ -58,8 +69,8 @@ const { nameLabel, namePlaceholder, emailLabel, emailPlaceholder, messageLabel, 
 					>
 					<input
 						type="email"
-						name="correo"
-						id="correo"
+						name="email"
+						id="email"
 						required
 						placeholder={emailPlaceholder}
 						class="block text-left w-full p-[1rem] bg-bg-main border-none rounded-main text-[0.9rem] shadow-m focus:outline-none placeholder:text-[0.9rem]"
@@ -67,12 +78,12 @@ const { nameLabel, namePlaceholder, emailLabel, emailPlaceholder, messageLabel, 
 				</div>
 			</div>
 			<div class="contacto__input-group w-full">
-				<label for="mensaje" class="block text-left mb-[1vh]"
+				<label for="message" class="block text-left mb-[1vh]"
 					>{messageLabel}</label
 				>
 				<textarea
-					id="mensaje"
-					name="mensaje"
+					id="message"
+					name="message"
 					rows="5"
 					cols="35"
 					required
@@ -84,7 +95,7 @@ const { nameLabel, namePlaceholder, emailLabel, emailPlaceholder, messageLabel, 
 				type="submit"
 				class="badge w-full py-[0.5rem] border-none cursor-pointer text-[1.1rem] transition-all duration-100 bg-accent hover:bg-accent-hover text-text-dark-bg rounded-main shadow-m"
 			>
-                {submitButton}
+				{submitButton}
 			</button>
 		</form>
 	</div>
