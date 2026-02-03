@@ -1,6 +1,8 @@
 ---
 import { actions } from "astro:actions";
 
+const result = Astro.getActionResult(actions.send);
+
 interface Props {
 	badge: string;
 	heading: string;
@@ -47,6 +49,24 @@ const {
 			enctype="application/x-www-form-urlencoded"
 			class="flex flex-col justify-center content-start gap-y-[2vh] w-[75%] max-[768px]:w-full h-full p-[5vh] bg-white rounded-main shadow-[inset_0_-4px_7px_#00000030,inset_0_4px_7px_#00000030]"
 		>
+			{result?.error && (
+				<p
+					class="w-full text-left text-red-600 text-[0.9rem]"
+					role="alert"
+					aria-live="polite"
+				>
+					{result.error.message}
+				</p>
+			)}
+			{result?.data && (
+				<p
+					class="w-full text-left text-green-700 text-[0.9rem]"
+					role="status"
+					aria-live="polite"
+				>
+					Thanks! Your message was sent.
+				</p>
+			)}
 			<div
 				class="contacto__top-input-groups flex flex-col lg:flex-row justify-center items-center gap-x-[1vw]"
 			>
