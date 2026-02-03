@@ -9,6 +9,16 @@ import Footer from "../../components/Footer.astro";
 
 import { translations } from "../../i18/ui";
 import FloatingBlogLink from "../../components/FloatingBlogLink.astro";
+import { actions } from "astro:actions";
+
+export const prerender = false;
+
+const result = Astro.getActionResult(actions.send);
+if (result?.data) {
+	return Astro.redirect(`${Astro.url.pathname}?sent=1#contact-section`);
+}
+
+const showSuccess = Astro.url.searchParams.get("sent") === "1";
 
 const t = translations.en;
 ---
@@ -46,6 +56,7 @@ const t = translations.en;
 			heading={t.contact.heading}
 			headingAccent={t.contact.headingAccent}
 			form={t.contact.form}
+			showSuccess={showSuccess}
 		/>
 	</main>
 	<Footer />
