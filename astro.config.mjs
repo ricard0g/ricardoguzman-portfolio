@@ -24,7 +24,7 @@ export default defineConfig({
       plugins: [tailwindcss()],
   },
 
-  site: "https://ricardoguzman.dev",
+  site: "https://ricardoguzdev.com",
   integrations: [sitemap()],
   adapter: vercel(),
 });
