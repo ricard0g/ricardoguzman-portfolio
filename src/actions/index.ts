@@ -27,7 +27,7 @@ export const server = {
 				from: `Portfolio Contact <contact@ricardoguzdev.com>`,
 				to: ["contact@ricardoguzdev.com"],
 				subject: `Portfolio Email From ${name}`,
-				html: `<h1>${name} - ${email}</h1><p>${message}</p>`,
+				html: `<h3>${name} - ${email}</h3><p>${message}</p>`,
 			});
 
 			if (error) {

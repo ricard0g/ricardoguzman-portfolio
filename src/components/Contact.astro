@@ -7,6 +7,7 @@ interface Props {
 	badge: string;
 	heading: string;
 	headingAccent: string;
+	showSuccess?: boolean;
 	form: {
 		nameLabel: string;
 		namePlaceholder: string;
@@ -18,7 +19,8 @@ interface Props {
 	};
 }
 
-const { badge, heading, headingAccent, form } = Astro.props;
+const { badge, heading, headingAccent, form, showSuccess = false } =
+	Astro.props;
 
 const {
 	nameLabel,
@@ -58,7 +60,7 @@ const {
 					{result.error.message}
 				</p>
 			)}
-			{result?.data && (
+			{showSuccess && (
 				<p
 					class="w-full text-left text-green-700 text-[0.9rem]"
 					role="status"
