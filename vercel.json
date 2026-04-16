@@ -2,7 +2,7 @@
 	"redirects": [
 		{
 			"source": "/blog",
-			"destination": "https://blog.ricardoguzman.dev",
+			"destination": "https://blog.ricardoguzdev.com",
 			"permanent": true
 		}
 	]
