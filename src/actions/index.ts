@@ -2,9 +2,6 @@ import { ActionError, defineAction } from "astro:actions";
 import { z } from "astro/zod";
 import { Resend } from "resend";
 
-const resendApiKey = import.meta.env.RESEND_API_KEY;
-const resend = new Resend(resendApiKey);
-
 export const server = {
 	send: defineAction({
 		accept: "form",
@@ -14,12 +11,17 @@ export const server = {
 			message: z.string(),
 		}),
 		handler: async ({ name, email, message }) => {
+			const resendApiKey =
+				process.env.RESEND_API_KEY ?? import.meta.env.RESEND_API_KEY;
+
 			if (!resendApiKey) {
 				throw new ActionError({
 					code: "BAD_REQUEST",
 					message: "RESEND_API_KEY is not configured.",
 				});
 			}
+
+			const resend = new Resend(resendApiKey);
 
 			const { data, error } = await resend.emails.send({
 				from: `Portfolio Contact <contact@ricardoguzdev.com>`,

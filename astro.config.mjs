@@ -24,6 +24,8 @@ export default defineConfig({
       plugins: [tailwindcss()],
   },
 
+  output: "server",
+
   site: "https://ricardoguzdev.com",
   integrations: [sitemap()],
   adapter: vercel(),
