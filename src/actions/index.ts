@@ -5,8 +5,6 @@ import { Resend } from "resend";
 const resendApiKey = import.meta.env.RESEND_API_KEY;
 const resend = new Resend(resendApiKey);
 
-console.log(resend);
-
 export const server = {
 	send: defineAction({
 		accept: "form",

@@ -187,6 +187,23 @@ const $$Footer = createComponent(($$result, $$props, $$slots) => {
 </p> </li> <li class="footer__logo-item md:absolute md:left-1/2 md:-translate-x-1/2 max-[640px]:order-0"> <span class="footer-logo text-[1.3rem] max-[640px]:text-[1.5rem] font-display">RICARDO<sup>®</sup></span> </li> <li class="footer__inner-list-item max-[640px]:-order-2"> <ul class="footer__inner-list flex justify-center items-center gap-x-[10px] max-[640px]:flex-row"> <li> <a aria-label="Visita mi canal de YouTube" target="_blank" href="https://www.youtube.com/@ricardoguzdev"> <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path> <path d="m10 15 5-3-5-3z"></path> </svg> </a> </li> <li> <a aria-label="Visita mi perfil en LinkedIn" href="https://www.linkedin.com/in/ricardo-guzman-duran-a09b62176" target="_blank"> <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path> <rect width="4" height="12" x="2" y="9"></rect> <circle cx="4" cy="4" r="2"></circle> </svg> </a> </li> <li> <a aria-label="Visita my perfil en X.com" href="https://x.com/ricardoguzdev" target="_blank" rel="noopener noreferrer"> <svg fill="#101418" width="20px" height="20px" viewBox="0 0 1200 1227"> <path d="M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z"></path> </svg> </a> </li> </ul> </li> </ul> </footer>`;
 }, "/Users/ricardoguzman/Documents/code/personalProjects/ricardoguzman-portfolio/src/components/Footer.astro", void 0);
 
+const backdropImage = new Proxy({"src":"/_astro/contact-section-image.AvJoZNHE.webp","width":1536,"height":1024,"format":"webp"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/ricardoguzman/Documents/code/personalProjects/ricardoguzman-portfolio/src/assets/contact-section-image.webp";
+							}
+							
+							return target[name];
+						}
+					});
+
+const $$BottomBackdrop = createComponent(($$result, $$props, $$slots) => {
+  return renderTemplate`${maybeRenderHead()}<section class="contact-footer__backdrop relative w-full overflow-hidden"> <div class="absolute inset-0 bg-cover bg-center"${addAttribute(`background-image: url('${backdropImage.src}');`, "style")} aria-hidden="true"></div> <div class="absolute inset-0 bg-bg-main/15" aria-hidden="true"></div> <div class="absolute top-0 left-0 right-0 h-[14vh] z-1 pointer-events-none" style="background: linear-gradient(to bottom, var(--color-bg-main), transparent);" aria-hidden="true"></div> <div class="absolute bottom-0 left-0 right-0 h-[14vh] z-1 pointer-events-none" style="background: linear-gradient(to bottom, transparent, var(--color-bg-main));" aria-hidden="true"></div> <div class="relative z-2"> ${renderSlot($$result, $$slots["default"])} </div> </section>`;
+}, "/Users/ricardoguzman/Documents/code/personalProjects/ricardoguzman-portfolio/src/components/BottomBackdrop.astro", void 0);
+
 const translations = {
   es: {
     header: {
@@ -384,4 +401,4 @@ const $$FloatingBlogLink = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<a id="floating-blog-link" class="fixed right-4 bottom-4 lg:right-10 lg:bottom-10 p-5 bg-accent rounded-full z-10" href="https://blog.ricardoguzdev.com/"${addAttribute(blogLink.title, "title")}${addAttribute(blogLink.ariaLabel, "aria-label")} target="_blank"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-icon lucide-book-open"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg> </a> ${renderScript($$result, "/Users/ricardoguzman/Documents/code/personalProjects/ricardoguzman-portfolio/src/components/FloatingBlogLink.astro?astro&type=script&index=0&lang.ts")}`;
 }, "/Users/ricardoguzman/Documents/code/personalProjects/ricardoguzman-portfolio/src/components/FloatingBlogLink.astro", void 0);
 
-export { $$FloatingBlogLink as $, $$Header as a, $$Hero as b, $$About as c, $$Portfolio as d, $$Contact as e, $$Footer as f, $$Layout as g, translations as t };
+export { $$FloatingBlogLink as $, $$Header as a, $$Hero as b, $$About as c, $$Portfolio as d, $$BottomBackdrop as e, $$Contact as f, $$Footer as g, $$Layout as h, translations as t };
