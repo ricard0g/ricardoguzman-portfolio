@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Portfolio from "../components/Portfolio.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+
+import { translations } from "../i18/ui";
+import FloatingBlogLink from "../components/FloatingBlogLink.astro";
+import { actions } from "astro:actions";
+
+export const prerender = false;
+
+const result = Astro.getActionResult(actions.send);
+if (result?.data) {
+	return Astro.redirect(`${Astro.url.pathname}?sent=1#contact-section`);
+}
+
+const showSuccess = Astro.url.searchParams.get("sent") === "1";
+
+const t = translations.es;
+---
+
+<Layout>
+	<FloatingBlogLink blogLink={t.header.blogLink} />
+	<Header
+		aboutLink={t.header.aboutLink}
+		portfolioLink={t.header.portfolioLink}
+		contactLink={t.header.contactLink}
+	/>
+	<main>
+		<Hero subheading={t.hero.subheading} description={t.hero.description} />
+		<About
+			badge={t.about.badge}
+			heading={t.about.heading}
+			headingAccent={t.about.headingAccent}
+			image={t.about.image}
+			p1={t.about.p1}
+			p2={t.about.p2}
+			p3={t.about.p3}
+			p4={t.about.p4}
+			p5={t.about.p5}
+			p6={t.about.p6}
+		/>
+		<Portfolio
+			badge={t.portfolio.badge}
+			heading={t.portfolio.heading}
+			headingAccent={t.portfolio.headingAccent}
+			buttons={t.portfolio.buttons}
+			projects={t.portfolio.projects}
+		/>
+		<Contact
+			badge={t.contact.badge}
+			heading={t.contact.heading}
+			headingAccent={t.contact.headingAccent}
+			form={t.contact.form}
+			showSuccess={showSuccess}
+		/>
+	</main>
+	<Footer />
+</Layout>
