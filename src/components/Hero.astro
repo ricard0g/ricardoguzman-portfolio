@@ -1,4 +1,5 @@
 ---
+import heroVideo from "../assets/hero__video2.mp4";
 import bgImage from "../assets/pexels-adrien-olichon-1257089-2387793.webp";
 
 interface Props {
@@ -7,26 +8,23 @@ interface Props {
 }
 
 const { subheading, description } = Astro.props;
-const heroVideoUrl =
-	"https://res.cloudinary.com/dqahemzwr/video/upload/v1776377312/hero_video_saidnk.mp4";
 ---
 
 <section
-	class="hero relative w-full h-screen overflow-hidden bg-cover bg-center"
+	class="hero relative w-full h-[95vh] overflow-hidden bg-cover bg-center"
 	style={`background-image: url('${bgImage.src}');`}
 >
 	<!-- Background video -->
 	<video
-		class="hero__video absolute inset-0 w-full h-full object-cover"
-		src={heroVideoUrl}
+		class="hero__video absolute inset-0 w-full h-full xl:w-[115%] xl:h-auto object-left md:object-center object-cover xl:object-contain"
+		src={heroVideo}
 		poster={bgImage.src}
 		preload="auto"
 		autoplay
 		loop
 		muted
 		playsinline
-		aria-hidden="true"
-	></video>
+		aria-hidden="true"></video>
 
 	<!-- Subtle readability veil over the bright footage -->
 	<div class="absolute inset-0 z-1 bg-black/5" aria-hidden="true"></div>
@@ -70,7 +68,8 @@ const heroVideoUrl =
 		class="absolute bottom-0 left-0 right-0 h-[30vh] z-3 pointer-events-none"
 		style="background: linear-gradient(to bottom, transparent, var(--color-bg-main));"
 		aria-hidden="true"
-	></div>
+	>
+	</div>
 </section>
 
 <style>
