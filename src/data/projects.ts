@@ -1,0 +1,142 @@
+import type { ImageMetadata } from "astro";
+
+import abstrakctImg from "../assets/abstrakct_screenshot.webp";
+import coffetopiaImg from "../assets/coffetopia_screenshot.webp";
+import portfolioImg from "../assets/portfolio-screenshot-modified.webp";
+import sartorialImg from "../assets/sartorial_store_screenshot.webp";
+import expensitrackImg from "../assets/expensitrack_screenshot.webp";
+import conviertloImg from "../assets/conviertlo-screenshot.webp";
+
+export type ProjectKey =
+	| "conviertlo"
+	| "expensitrack"
+	| "abstrakct"
+	| "coffetopia"
+	| "blog"
+	| "sartorial";
+
+export interface ProjectTag {
+	name: string;
+	/** Tailwind classes for background, border and hover background. */
+	color: string;
+}
+
+export interface ProjectConfig {
+	key: ProjectKey;
+	image: ImageMetadata;
+	imageClass: string;
+	captionClass?: string;
+	tagsClass?: string;
+	tags: ProjectTag[];
+	links: {
+		visit: string;
+		github: string;
+	};
+}
+
+const bigImg =
+	"portfolio__big-card-img relative left-[5%] top-[2vh] max-[1150px]:left-0 max-[1150px]:min-w-[500px] max-[1150px]:max-w-[700px]";
+const smallImg =
+	"portfolio__small-card-img relative top-[2vh] rounded-[5px] max-[1150px]:left-0 max-[1150px]:min-w-[500px] max-[1150px]:max-w-[700px]";
+
+// Order matters only for DOM order; placement is defined by the grid areas in Portfolio.astro.
+export const projectsConfig: ProjectConfig[] = [
+	{
+		key: "conviertlo",
+		image: conviertloImg,
+		imageClass: `${bigImg} min-w-[850px] rounded-md`,
+		captionClass: "max-[1150px]:translate-y-[15%]",
+		tags: [
+			{ name: "Python", color: "bg-blue-600/80 border-blue-700 hover:bg-blue-700" },
+			{ name: "Textualize", color: "bg-pink-600/80 border-pink-700 hover:bg-pink-700" },
+			{ name: "FFMPEG", color: "bg-green-700/80 border-green-800 hover:bg-green-800" },
+			{
+				name: "GitHub Copilot SDK",
+				color: "bg-purple-700/80 border-purple-800 hover:bg-purple-800",
+			},
+		],
+		links: {
+			visit: "https://pypi.org/project/conviertlo/",
+			github: "https://github.com/ricard0g/conviertlo",
+		},
+	},
+	{
+		key: "expensitrack",
+		image: expensitrackImg,
+		imageClass: `${bigImg} min-w-[725px]`,
+		tagsClass: "max-[1500px]:max-h-[80px] overflow-scroll",
+		tags: [
+			{ name: "TypeScript", color: "bg-blue-800/80 border-blue-900 hover:bg-blue-900" },
+			{ name: "React Router", color: "bg-red-600/80 border-red-700 hover:bg-red-700" },
+			{ name: "TailwindCSS", color: "bg-cyan-700/80 border-cyan-800 hover:bg-cyan-800" },
+			{ name: "Java", color: "bg-orange-700/80 border-orange-800 hover:bg-orange-800" },
+			{ name: "Spring Boot", color: "bg-green-600/80 border-green-700 hover:bg-green-700" },
+			{ name: "TanStack Table", color: "bg-amber-600/80 border-amber-700 hover:bg-amber-700" },
+			{ name: "shadcn/ui", color: "bg-zinc-700/80 border-zinc-800 hover:bg-zinc-800" },
+			{ name: "Docker", color: "bg-sky-600/80 border-sky-700 hover:bg-sky-700" },
+			{ name: "Vercel", color: "bg-slate-800/80 border-slate-900 hover:bg-slate-900" },
+		],
+		links: {
+			visit: "https://expensitrack-web.vercel.app/",
+			github: "https://github.com/ricard0g/expensitrack-web",
+		},
+	},
+	{
+		key: "abstrakct",
+		image: abstrakctImg,
+		imageClass: `${bigImg} min-w-[600px]`,
+		tags: [
+			{ name: "Liquid", color: "bg-cyan-400/80 border-cyan-700 hover:bg-cyan-700" },
+			{ name: "TypeScript", color: "bg-blue-800/80 border-blue-900 hover:bg-blue-900" },
+			{ name: "Hydrogen", color: "bg-purple-800/80 border-purple-900 hover:bg-purple-900" },
+			{ name: "Remix", color: "bg-indigo-800/80 border-indigo-900 hover:bg-indigo-900" },
+			{ name: "TailwindCSS", color: "bg-cyan-700/80 border-cyan-800 hover:bg-cyan-800" },
+		],
+		links: {
+			visit: "https://abstrakct.netlify.app/",
+			github: "https://github.com/ricard0g/abstrakct",
+		},
+	},
+	{
+		key: "coffetopia",
+		image: coffetopiaImg,
+		imageClass: `${smallImg} left-[2%] min-w-[750px]`,
+		tags: [
+			{ name: "Liquid", color: "bg-cyan-400/80 border-cyan-700 hover:bg-cyan-700" },
+			{ name: "TypeScript", color: "bg-blue-800/80 border-blue-900 hover:bg-blue-900" },
+			{ name: "Preact", color: "bg-purple-800/80 border-purple-900 hover:bg-purple-900" },
+			{ name: "Shopify", color: "bg-green-800/80 border-green-900 hover:bg-green-900" },
+		],
+		links: {
+			visit: "https://coffeee-topia.myshopify.com/password",
+			github: "https://github.com/ricard0g/coffeetopia",
+		},
+	},
+	{
+		key: "blog",
+		image: portfolioImg,
+		// Desktop offset differs from the other small cards; on mobile it is padded, rounded and narrower.
+		imageClass:
+			"portfolio__small-card-img relative top-[3vh] left-[10%] min-w-[550px] rounded-[5px] max-[1150px]:left-0 max-[1150px]:min-w-[500px] max-[1150px]:max-w-[400px] max-[1150px]:p-[2vh] max-[1150px]:rounded-main",
+		tags: [
+			{ name: "Astro", color: "bg-orange-700/80 border-orange-800 hover:bg-orange-800" },
+		],
+		links: {
+			visit: "https://blog.ricardoguzdev.com/",
+			github: "https://github.com/ricard0g/ricardoguzman-blog",
+		},
+	},
+	{
+		key: "sartorial",
+		image: sartorialImg,
+		imageClass: `${bigImg} min-w-[600px]`,
+		tags: [
+			{ name: "Liquid", color: "bg-cyan-400/80 border-cyan-700 hover:bg-cyan-700" },
+			{ name: "Shopify", color: "bg-green-800/80 border-green-900 hover:bg-green-900" },
+		],
+		links: {
+			visit: "https://sartorial-store.myshopify.com/password",
+			github: "https://github.com/ricard0g/sartorial-store",
+		},
+	},
+];

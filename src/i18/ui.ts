@@ -49,7 +49,7 @@ export const translations = {
             projects: {
                 conviertlo: {
                     title: "Conviertlo TUI",
-                    description: "TUI para convertir y comprimir archivos multimedia usando lenguaje natural. Impulsado por FFMPEG y GitHub Copilot SDK para traducir peticiones como 'comprimir a 25MB' en comandos precisos. A Satya Nadella le gustó el post de lanzamiento en X.",
+                    description: "TUI para convertir y comprimir archivos multimedia usando lenguaje natural. Impulsado por FFMPEG y GitHub Copilot SDK para traducir peticiones como 'comprimir a 25MB' en comandos precisos. Lo lancé en X y Satya Nadella, CEO de Microsoft, le dio like al post.",
                     imageAlt: "Conviertlo TUI pantalla principal"
                 },
                 expensitrack: {
@@ -151,7 +151,7 @@ export const translations = {
             projects: {
                 conviertlo: {
                     title: "Conviertlo TUI",
-                    description: "TUI for converting and compressing media files using natural language. Powered by FFMPEG and GitHub Copilot SDK to translate requests like 'compress to 25MB' into precise commands. Satya Nadella liked the announcement post on X.",
+                    description: "TUI for converting and compressing media files using natural language. Powered by FFMPEG and GitHub Copilot SDK to translate requests like 'compress to 25MB' into precise commands. I launched it on X and Satya Nadella, Microsoft's CEO, liked the post.",
                     imageAlt: "Initial screen of Conviertlo TUI"
                 },
                 expensitrack: {

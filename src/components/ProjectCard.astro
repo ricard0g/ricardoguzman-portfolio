@@ -1,0 +1,145 @@
+---
+import type { ImageMetadata } from "astro";
+import type { ProjectKey, ProjectTag } from "../data/projects";
+
+interface Props {
+	projectKey: ProjectKey;
+	title: string;
+	description: string;
+	passwordNote?: string;
+	imageAlt: string;
+	image: ImageMetadata;
+	imageClass: string;
+	captionClass?: string;
+	tagsClass?: string;
+	tags: ProjectTag[];
+	links: {
+		visit: string;
+		github: string;
+	};
+	buttons: {
+		visit: string;
+		github: string;
+	};
+}
+
+const {
+	projectKey,
+	title,
+	description,
+	passwordNote,
+	imageAlt,
+	image,
+	imageClass,
+	captionClass,
+	tagsClass,
+	tags,
+	links,
+	buttons,
+} = Astro.props;
+
+const linkClass =
+	"inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m";
+---
+
+<article
+	id={`${projectKey}-card`}
+	style={`grid-area: ${projectKey};`}
+	class="portfolio__proyect-card group w-full h-full bg-white rounded-main shadow-m"
+>
+	<figure class="relative w-full h-full rounded-main overflow-hidden">
+		<img class={imageClass} src={image.src} alt={imageAlt} />
+		<figcaption
+			class:list={[
+				"portfolio__card-caption group-hover:visible group-hover:opacity-100 max-[1150px]:visible max-[1150px]:opacity-100",
+				captionClass,
+			]}
+		>
+			<h2
+				class="text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-normal"
+			>
+				{title}
+			</h2>
+			<p class="text-[0.95rem] max-[640px]:text-[0.85rem] font-light">
+				{description}
+				{passwordNote && <strong>{passwordNote}</strong>}
+			</p>
+			<div
+				class:list={[
+					"flex justify-center items-center gap-x-[8px] gap-y-[6px] flex-wrap",
+					tagsClass,
+				]}
+			>
+				{
+					tags.map((tag) => (
+						<span
+							class={`px-3 py-1.5 text-xs font-medium border rounded-full text-white transition-all duration-150 hover:-translate-y-0.5 ${tag.color}`}
+						>
+							{tag.name}
+						</span>
+					))
+				}
+			</div>
+			<div
+				class="portfolio__links-container flex justify-center items-center gap-x-[10px] gap-y-[5px] flex-wrap"
+			>
+				<a href={links.visit} target="_blank" class={linkClass}
+					>{buttons.visit}</a
+				>
+				<a href={links.github} target="_blank" class={linkClass}
+					>{buttons.github}</a
+				>
+			</div>
+		</figcaption>
+	</figure>
+</article>
+
+<style>
+	.portfolio__card-caption {
+		visibility: hidden;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		align-items: center;
+		row-gap: 2vh;
+		width: 100%;
+		height: 100%;
+		padding: 0 2vw;
+		border-radius: var(--radius-main);
+		backdrop-filter: blur(8px);
+		background-color: #101418b0;
+		color: var(--color-text-dark-bg);
+		opacity: 0;
+		transition: all 200ms linear;
+	}
+
+	.portfolio__proyect-card:hover .portfolio__card-caption {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	@media only screen and (max-width: 1150px) {
+		.portfolio__card-caption {
+			visibility: visible !important;
+			opacity: 1 !important;
+			position: static;
+			transform: translateY(-100%);
+			height: 30%;
+			width: 80%;
+			max-width: 90%;
+			margin: 0 auto;
+			padding: 1vh;
+			background-color: #101418d0;
+			box-shadow: 0px 2px 4px #101418d0;
+		}
+	}
+
+	@media only screen and (max-width: 640px) {
+		.portfolio__card-caption {
+			width: 90%;
+		}
+	}
+</style>
