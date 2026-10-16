@@ -12,7 +12,6 @@ interface Props {
 	image: ImageMetadata;
 	edgeColor: string;
 	imageClass: string;
-	captionClass?: string;
 	tagsClass?: string;
 	tags: ProjectTag[];
 	links: {
@@ -34,7 +33,6 @@ const {
 	image,
 	edgeColor,
 	imageClass,
-	captionClass,
 	tagsClass,
 	tags,
 	links,
@@ -63,10 +61,7 @@ const linkClass =
 				<span class="portfolio__card-fade" aria-hidden="true"></span>
 			</div>
 			<figcaption
-				class:list={[
-					"portfolio__card-caption group-hover:visible group-hover:opacity-100",
-					captionClass,
-				]}
+				class="portfolio__card-caption group-hover:visible group-hover:opacity-100"
 			>
 				<h2
 					class="portfolio__card-title text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-normal"
@@ -219,6 +214,7 @@ const linkClass =
 		}
 
 		.portfolio__card-caption {
+			--card-body-size: 0.95rem;
 			visibility: visible;
 			opacity: 1;
 			position: static;
@@ -243,20 +239,36 @@ const linkClass =
 			color: var(--card-title);
 		}
 
-		.portfolio__card-tags {
-			order: 2;
-			justify-content: flex-start;
-		}
-
 		.portfolio__card-description {
-			order: 3;
+			order: 2;
+			font-size: var(--card-body-size);
 			font-weight: 400;
 			line-height: 1.5;
+		}
+
+		.portfolio__card-tags {
+			order: 3;
+			justify-content: flex-start;
+			gap: 4px 6px;
+		}
+
+		/* Compact pills set in the same type size as the description */
+		.portfolio__card-tags span {
+			padding: 2px 8px;
+			font-size: var(--card-body-size);
+			font-weight: 400;
+			line-height: 1.4;
 		}
 
 		.portfolio__links-container {
 			order: 4;
 			margin-top: 4px;
+		}
+	}
+
+	@media only screen and (max-width: 640px) {
+		.portfolio__card-caption {
+			--card-body-size: 0.85rem;
 		}
 	}
 </style>
