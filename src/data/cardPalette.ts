@@ -36,8 +36,7 @@ export function cardPalette(edgeHex: string): Record<string, string> {
 	const isLight = luminance(edgeHex) > 0.35;
 
 	if (isLight) {
-		// Pure white leaves no room for the light shadow, so cap the lightness
-		// and let the gradient darken the image slightly to sell the raised look.
+		// Pure white leaves no room for the light shadow, so cap the lightness.
 		const bg = { ...edge, l: clamp(edge.l, 0.8, 0.94) };
 		return {
 			"--card-bg": hsl(bg),
@@ -45,7 +44,8 @@ export function cardPalette(edgeHex: string): Record<string, string> {
 			"--card-shadow-light": hsl({ ...bg, l: bg.l + 0.12 }),
 			"--card-title": "var(--color-text-main)",
 			"--card-text": "#474e61",
-			"--card-fade": `linear-gradient(to bottom, rgb(0 0 0 / 0.08), ${hsl(bg)})`,
+			// The top half stays untouched so the screenshot shows as is
+			"--card-fade": `linear-gradient(to bottom, transparent 50%, ${hsl(bg)})`,
 		};
 	}
 
