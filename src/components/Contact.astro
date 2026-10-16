@@ -69,6 +69,12 @@ const {
 					Thanks! Your message was sent.
 				</p>
 			)}
+			<!-- Spam traps: bots fill every field and submit instantly. -->
+			<input type="hidden" name="renderedAt" value={Date.now()} />
+			<div aria-hidden="true" class="absolute -left-[10000px] w-px h-px overflow-hidden">
+				<label for="website">Website</label>
+				<input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
+			</div>
 			<div
 				class="contacto__top-input-groups flex flex-col lg:flex-row justify-center items-center gap-x-[1vw]"
 			>
