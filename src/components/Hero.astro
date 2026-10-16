@@ -39,11 +39,16 @@ const countryCode =
 	Astro.request.headers.get("x-vercel-ip-country") ??
 	(import.meta.env.DEV ? Astro.url.searchParams.get("country")?.toUpperCase() : null);
 const country = getCountryInfo(countryCode, lang);
+
+// Below lg the greeting is compressed onto the controls' line: the country and
+// flag become the fun fact trigger instead of the separate "Fun Fact" sentence.
+const [, greetingBefore = "", , greetingAfter = ""] =
+	visitor.greeting.match(/^(.*)\{country\}(.*)\{flag\}(.*)$/) ?? [];
 ---
 
 <section
 	id="hero-section"
-	class="hero w-full pt-[clamp(6rem,14vh,8.5rem)]"
+	class="hero w-full pt-[clamp(6rem,14vh,8.5rem)] max-[768px]:pt-16"
 >
 	<!--
 		The main column follows the same widths as the About section. On large
@@ -54,7 +59,7 @@ const country = getCountryInfo(countryCode, lang);
 		class="hero__layout mx-auto grid grid-cols-1 gap-x-5 [--hero-col:40%] max-[1250px]:[--hero-col:60%] max-[768px]:[--hero-col:80%] max-[425px]:[--hero-col:90%] w-(--hero-col) lg:w-full lg:grid-cols-[1fr_var(--hero-col)_1fr]"
 	>
 		<div
-			class="hero__screen relative aspect-[29/15] w-full overflow-hidden rounded-[10px] lg:col-start-2"
+			class="hero__screen relative aspect-[29/15] max-[640px]:aspect-square w-full overflow-hidden rounded-[10px] lg:col-start-2"
 		>
 			<canvas
 				class="hero__canvas absolute inset-0 h-full w-full"
@@ -63,30 +68,53 @@ const country = getCountryInfo(countryCode, lang);
 		</div>
 
 		<aside
-			class="hero__controls mt-4 flex flex-row flex-wrap gap-x-6 gap-y-3 lg:col-start-3 lg:row-start-1 lg:mt-6 lg:flex-col lg:flex-nowrap lg:gap-6"
+			class="hero__controls mt-3 flex flex-row items-baseline justify-between gap-x-4 lg:col-start-3 lg:row-start-1 lg:mt-6 lg:flex-col lg:items-start lg:justify-start lg:gap-6"
 		>
-			<button
-				type="button"
-				class="hero__control"
-				data-control="colors"
-				aria-label={controls.colorsLabel}
-			>
-				<span>{controls.colors}</span>
-				<PaletteIcon aria-hidden="true" />
-			</button>
-			<button
-				type="button"
-				class="hero__control"
-				data-control="channel"
-				aria-label={controls.channelLabel}
-			>
-				<span>{controls.channel}</span>
-				<ChannelIcon aria-hidden="true" />
-			</button>
+			<div class="ml-auto flex shrink-0 gap-x-5 lg:ml-0 lg:flex-col lg:gap-6">
+				<button
+					type="button"
+					class="hero__control"
+					data-control="colors"
+					aria-label={controls.colorsLabel}
+				>
+					<span>{controls.colors}</span>
+					<PaletteIcon aria-hidden="true" />
+				</button>
+				<button
+					type="button"
+					class="hero__control"
+					data-control="channel"
+					aria-label={controls.channelLabel}
+				>
+					<span>{controls.channel}</span>
+					<ChannelIcon aria-hidden="true" />
+				</button>
+			</div>
 
 			{
 				country && (
-					<div class="hero__visitor basis-full lg:basis-auto text-[14px] leading-[normal] tracking-[-0.01em] text-text-main lg:mt-6 lg:max-w-[160px]">
+					<p class="hero__visitor-compact order-first min-w-0 text-[14px] leading-[normal] tracking-[-0.01em] text-text-main lg:hidden">
+						{country.fact ? (
+							<>
+								{greetingBefore}
+								<LinkPreview caption={country.fact} align="start">
+									{country.name}
+									<span class="hero__flag">{country.flag}</span>
+								</LinkPreview>
+								{greetingAfter}
+							</>
+						) : (
+							visitor.greeting
+								.replace("{country}", country.name)
+								.replace("{flag}", country.flag)
+						)}
+					</p>
+				)
+			}
+
+			{
+				country && (
+					<div class="hero__visitor hidden text-[14px] leading-[normal] tracking-[-0.01em] text-text-main lg:mt-6 lg:block lg:max-w-[160px]">
 						<p>
 							{visitor.greeting
 								.replace("{country}", country.name)
@@ -104,9 +132,9 @@ const country = getCountryInfo(countryCode, lang);
 			}
 		</aside>
 
-		<div class="hero__copy mt-4 lg:col-start-2">
+		<div class="hero__copy mt-6 lg:col-start-2">
 			<h1
-				class="font-accent text-wrap text-[clamp(1.75rem,4vw,2.25rem)] leading-[normal] font-normal tracking-[-0.01em] text-accent"
+				class="font-accent text-wrap text-[clamp(2rem,5vw,5rem)] lg:text-[clamp(1.75rem,4vw,2.25rem)] leading-[normal] font-normal tracking-[-0.01em] text-accent"
 			>
 				{heading}
 			</h1>
@@ -174,6 +202,12 @@ const country = getCountryInfo(countryCode, lang);
 		letter-spacing: -0.01em;
 		color: var(--color-accent);
 		transition: opacity 100ms linear;
+	}
+
+	/* Inline-block keeps the trigger's dotted underline off the flag */
+	.hero__flag {
+		display: inline-block;
+		margin-left: 0.25em;
 	}
 
 	.hero__control:hover {

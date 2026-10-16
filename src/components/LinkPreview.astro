@@ -17,10 +17,19 @@ interface Props {
 	/** Display width of the preview image in pixels; wider suits landscape shots. */
 	imageWidth?: number;
 	caption?: string;
+	/** Anchor the card to the trigger's left edge instead of centering it, for triggers near the screen edge. */
+	align?: "center" | "start";
 }
 
-const { href, external = false, dialog, image, imageWidth = 140, caption } =
-	Astro.props;
+const {
+	href,
+	external = false,
+	dialog,
+	image,
+	imageWidth = 140,
+	caption,
+	align = "center",
+} = Astro.props;
 const hasCard = Boolean(image || caption);
 // Without a link or dialog the card is the content itself, so tapping toggles it
 const isToggle = !href && !dialog;
@@ -52,7 +61,7 @@ const maxWidth = image ? `${imageWidth + 12}px` : "240px";
 	hasCard && (
 		<span
 			id={cardId}
-			class="preview__card"
+			class:list={["preview__card", align === "start" && "preview__card--start"]}
 			style={`--preview-image-width: ${imageWidth}px; --preview-max-width: ${maxWidth}`}
 			aria-hidden={isToggle ? undefined : "true"}
 		>
@@ -133,6 +142,11 @@ const maxWidth = image ? `${imageWidth + 12}px` : "240px";
 		transition:
 			clip-path var(--preview-duration) ease-out,
 			opacity var(--preview-duration) ease-out;
+	}
+
+	.preview__card--start {
+		left: 0;
+		translate: none;
 	}
 
 	@media (hover: hover) {

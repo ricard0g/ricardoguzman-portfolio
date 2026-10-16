@@ -16,7 +16,7 @@
 
   /* Spacing */
   /* Vertical gap between page sections, shared so they stay evenly spaced */
-  --spacing-section: clamp(6rem, 14vh, 10rem);
+  --spacing-section: clamp(6rem, 11vh, 10rem);
 
   /* Border Radius */
   --radius-main: 20px;
