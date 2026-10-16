@@ -93,7 +93,7 @@ const [, greetingBefore = "", , greetingAfter = ""] =
 
 			{
 				country && (
-					<p class="hero__visitor-compact order-first min-w-0 text-[14px] leading-[normal] tracking-[-0.01em] text-text-main lg:hidden">
+					<p class="hero__visitor-compact order-first min-w-0 text-[14px] leading-[normal] tracking-[-0.01em] text-text-subtle lg:hidden">
 						{country.fact ? (
 							<>
 								{greetingBefore}
@@ -134,12 +134,12 @@ const [, greetingBefore = "", , greetingAfter = ""] =
 
 		<div class="hero__copy mt-6 lg:col-start-2">
 			<h1
-				class="font-accent text-wrap text-[clamp(2rem,5vw,5rem)] lg:text-[clamp(1.75rem,4vw,2.25rem)] leading-[normal] font-normal tracking-[-0.01em] text-accent"
+				class="font-accent text-wrap text-[clamp(1.75rem,5vw,5rem)] lg:text-[clamp(1.75rem,4vw,2.25rem)] leading-[normal] font-normal tracking-[-0.01em] text-accent"
 			>
 				{heading}
 			</h1>
 			<p
-				class="mt-6 text-base leading-[normal] tracking-[-0.01em] text-text-main"
+				class="mt-6 text-sm lg:text-base leading-[1.5] text-text-main"
 			>
 				{bio.intro}<LinkPreview dialog="about-dialog" image={myPhoto}
 					>{bio.name}</LinkPreview
@@ -208,6 +208,14 @@ const [, greetingBefore = "", , greetingAfter = ""] =
 	.hero__flag {
 		display: inline-block;
 		margin-left: 0.25em;
+	}
+
+	/* Below lg the controls sit under the screen; a lighter tone keeps them
+	   from competing with the heading and bio */
+	@media (width < 64rem) {
+		.hero__control {
+			color: var(--color-text-subtle);
+		}
 	}
 
 	.hero__control:hover {
