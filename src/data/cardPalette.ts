@@ -55,7 +55,7 @@ export function cardPalette(edgeHex: string): Record<string, string> {
 		"--card-bg": hsl(bg),
 		"--card-shadow-dark": hsl({ ...bg, l: bg.l * 0.55 }),
 		"--card-shadow-light": hsl({ ...bg, l: bg.l + 0.1 }),
-		"--card-title": "var(--color-text-dark-bg)",
+		"--card-title": "var(--color-text-dark-bg-strong)",
 		"--card-text": "#ababab",
 		"--card-fade": `linear-gradient(to bottom, transparent 50%, ${hsl(bg)})`,
 	};
