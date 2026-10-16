@@ -106,6 +106,30 @@ const maxWidth = image ? `${imageWidth + 12}px` : "240px";
 	document.addEventListener("keydown", (event) => {
 		if (event.key === "Escape") close();
 	});
+
+	// Hidden cards still take up layout, so one centered near the screen edge
+	// would widen the page. Nudge each card back inside the viewport.
+	const GUTTER = 8;
+	const fitCards = () => {
+		const cards = document.querySelectorAll<HTMLElement>(".preview__card");
+		cards.forEach((card) => card.style.setProperty("--preview-shift", "0px"));
+		const viewport = document.documentElement.clientWidth;
+		cards.forEach((card) => {
+			const { left, right, width } = card.getBoundingClientRect();
+			if (!width) return;
+			const shift = Math.max(GUTTER - left, Math.min(0, viewport - GUTTER - right));
+			if (shift) card.style.setProperty("--preview-shift", `${shift}px`);
+		});
+	};
+
+	let frame = 0;
+	const scheduleFit = () => {
+		cancelAnimationFrame(frame);
+		frame = requestAnimationFrame(fitCards);
+	};
+	scheduleFit();
+	window.addEventListener("resize", scheduleFit);
+	document.fonts?.ready.then(scheduleFit);
 </script>
 
 <style>
@@ -140,7 +164,8 @@ const maxWidth = image ? `${imageWidth + 12}px` : "240px";
 		background-color: var(--color-accent);
 		color: var(--color-text-dark-bg);
 		border-radius: var(--preview-radius);
-		translate: -50% 0;
+		/* --preview-shift is set by the script to keep the card on screen */
+		translate: calc(-50% + var(--preview-shift, 0px)) 0;
 		pointer-events: none;
 		/* Revealed top-down so the card reads as growing in height */
 		clip-path: inset(0 0 100% 0 round var(--preview-radius));
@@ -152,7 +177,7 @@ const maxWidth = image ? `${imageWidth + 12}px` : "240px";
 
 	.preview__card--start {
 		left: 0;
-		translate: none;
+		translate: var(--preview-shift, 0px) 0;
 	}
 
 	@media (hover: hover) {
