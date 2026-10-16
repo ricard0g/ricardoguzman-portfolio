@@ -42,7 +42,7 @@ export interface ProjectConfig {
 }
 
 const bigImg =
-	"portfolio__big-card-img relative left-[5%] top-[2vh]";
+	"portfolio__big-card-img relative left-[5%] top-[2vh] rounded-md";
 const smallImg =
 	"portfolio__small-card-img relative top-[2vh] rounded-[5px]";
 
@@ -53,7 +53,7 @@ export const projectsConfig: ProjectConfig[] = [
 		image: jobtrackrImg,
 		edgeColor: imageEdges["jobtrackr-hero-page.webp"],
 		// The screenshot has a white background, so a border and shadow keep it from blending into the card
-		imageClass: `${bigImg} min-w-[800px] rounded-md border border-zinc-200 shadow-m`,
+		imageClass: `${bigImg} min-w-[800px] border border-zinc-200 shadow-m`,
 		tags: [
 			{ name: "Java", color: "bg-orange-700/80 border-orange-800 hover:bg-orange-800" },
 			{ name: "Spring Boot", color: "bg-green-600/80 border-green-700 hover:bg-green-700" },
@@ -74,7 +74,7 @@ export const projectsConfig: ProjectConfig[] = [
 		key: "conviertlo",
 		image: conviertloImg,
 		edgeColor: imageEdges["conviertlo-screenshot.webp"],
-		imageClass: `${bigImg} min-w-[850px] rounded-md`,
+		imageClass: `${bigImg} min-w-[850px]`,
 		highlightImage: satyaLikeImg,
 		tags: [
 			{ name: "Python", color: "bg-blue-600/80 border-blue-700 hover:bg-blue-700" },
