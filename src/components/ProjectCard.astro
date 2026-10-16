@@ -1,6 +1,7 @@
 ---
 import type { ImageMetadata } from "astro";
 import type { ProjectKey, ProjectTag } from "../data/projects";
+import { cardPalette } from "../data/cardPalette";
 
 interface Props {
 	projectKey: ProjectKey;
@@ -9,6 +10,7 @@ interface Props {
 	passwordNote?: string;
 	imageAlt: string;
 	image: ImageMetadata;
+	edgeColor: string;
 	imageClass: string;
 	captionClass?: string;
 	tagsClass?: string;
@@ -30,6 +32,7 @@ const {
 	passwordNote,
 	imageAlt,
 	image,
+	edgeColor,
 	imageClass,
 	captionClass,
 	tagsClass,
@@ -39,62 +42,82 @@ const {
 } = Astro.props;
 
 const linkClass =
-	"inline bg-accent py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m";
+	"inline bg-accent text-text-dark-bg py-[0.5rem] max-[640px]:py-[0.75rem] px-[1rem] max-[640px]:px-[1.25rem] rounded-main shadow-m";
 ---
 
+<!--
+	Desktop: the screenshot fills the card and the caption fades in over it on hover.
+	Mobile (<= 1150px): neumorphic card with the screenshot on top, fading through
+	a gradient into a caption tinted with the screenshot's bottom edge colour.
+	The shell and media wrappers are `display: contents` on desktop.
+-->
 <article
 	id={`${projectKey}-card`}
-	style={`grid-area: ${projectKey};`}
+	style={{ "grid-area": projectKey, ...cardPalette(edgeColor) }}
 	class="portfolio__proyect-card group w-full h-full bg-white rounded-main shadow-m"
 >
-	<figure class="relative w-full h-full rounded-main overflow-hidden">
-		<img class={imageClass} src={image.src} alt={imageAlt} />
-		<figcaption
-			class:list={[
-				"portfolio__card-caption group-hover:visible group-hover:opacity-100 max-[1150px]:visible max-[1150px]:opacity-100",
-				captionClass,
-			]}
-		>
-			<h2
-				class="text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-normal"
-			>
-				{title}
-			</h2>
-			<p class="text-[0.95rem] max-[640px]:text-[0.85rem] font-light">
-				{description}
-				{passwordNote && <strong>{passwordNote}</strong>}
-			</p>
-			<div
+	<div class="portfolio__card-shell">
+		<figure class="portfolio__card-figure relative w-full h-full rounded-main overflow-hidden">
+			<div class="portfolio__card-media">
+				<img class={imageClass} src={image.src} alt={imageAlt} />
+				<span class="portfolio__card-fade" aria-hidden="true"></span>
+			</div>
+			<figcaption
 				class:list={[
-					"flex justify-center items-center gap-x-[8px] gap-y-[6px] flex-wrap",
-					tagsClass,
+					"portfolio__card-caption group-hover:visible group-hover:opacity-100",
+					captionClass,
 				]}
 			>
-				{
-					tags.map((tag) => (
-						<span
-							class={`px-3 py-1.5 text-xs font-medium border rounded-full text-white transition-all duration-150 hover:-translate-y-0.5 ${tag.color}`}
-						>
-							{tag.name}
-						</span>
-					))
-				}
-			</div>
-			<div
-				class="portfolio__links-container flex justify-center items-center gap-x-[10px] gap-y-[5px] flex-wrap"
-			>
-				<a href={links.visit} target="_blank" class={linkClass}
-					>{buttons.visit}</a
+				<h2
+					class="portfolio__card-title text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-normal"
 				>
-				<a href={links.github} target="_blank" class={linkClass}
-					>{buttons.github}</a
+					{title}
+				</h2>
+				<p class="portfolio__card-description text-[0.95rem] max-[640px]:text-[0.85rem] font-light">
+					{description}
+					{passwordNote && <strong>{passwordNote}</strong>}
+				</p>
+				<div
+					class:list={[
+						"portfolio__card-tags flex justify-center items-center gap-x-[8px] gap-y-[6px] flex-wrap",
+						tagsClass,
+					]}
 				>
-			</div>
-		</figcaption>
-	</figure>
+					{
+						tags.map((tag) => (
+							<span
+								class={`px-3 py-1.5 text-xs font-medium border rounded-full text-white transition-all duration-150 hover:-translate-y-0.5 ${tag.color}`}
+							>
+								{tag.name}
+							</span>
+						))
+					}
+				</div>
+				<div
+					class="portfolio__links-container flex justify-center items-center gap-x-[10px] gap-y-[5px] flex-wrap"
+				>
+					<a href={links.visit} target="_blank" class={linkClass}
+						>{buttons.visit}</a
+					>
+					<a href={links.github} target="_blank" class={linkClass}
+						>{buttons.github}</a
+					>
+				</div>
+			</figcaption>
+		</figure>
+	</div>
 </article>
 
 <style>
+	.portfolio__card-shell,
+	.portfolio__card-media {
+		display: contents;
+	}
+
+	.portfolio__card-fade {
+		display: none;
+	}
+
 	.portfolio__card-caption {
 		visibility: hidden;
 		position: absolute;
@@ -122,24 +145,116 @@ const linkClass =
 	}
 
 	@media only screen and (max-width: 1150px) {
-		.portfolio__card-caption {
-			visibility: visible !important;
-			opacity: 1 !important;
-			position: static;
-			transform: translateY(-100%);
-			height: 30%;
-			width: 80%;
-			max-width: 90%;
-			margin: 0 auto;
-			padding: 1vh;
-			background-color: #101418d0;
-			box-shadow: 0px 2px 4px #101418d0;
+		/* Outer recessed frame */
+		.portfolio__proyect-card {
+			height: auto;
+			padding: 8px;
+			border-radius: 50px;
+			background-color: #f1f1f1;
+			box-shadow:
+				inset 0 -1px 4px rgb(0 0 0 / 0.15),
+				inset 0 1px 4px rgb(0 0 0 / 0.15);
 		}
-	}
 
-	@media only screen and (max-width: 640px) {
+		/* Raised shell between frame and caption panel */
+		.portfolio__card-shell {
+			display: block;
+			padding: 8px;
+			border-radius: 42px;
+			background-color: var(--color-bg-main);
+			box-shadow: 1px 1px 4px rgb(0 0 0 / 0.2);
+		}
+
+		/* Panel tinted with the screenshot's edge colour */
+		.portfolio__card-figure {
+			display: flex;
+			flex-direction: column;
+			height: auto;
+			border-radius: 36px;
+			background-color: var(--card-bg);
+		}
+
+		/* Inner shadow drawn above the image so it wraps the whole panel seamlessly */
+		.portfolio__card-figure::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 2;
+			border-radius: inherit;
+			box-shadow:
+				inset -4px -4px 6px var(--card-shadow-dark),
+				inset 4px 4px 4px var(--card-shadow-light);
+			pointer-events: none;
+		}
+
+		.portfolio__card-media {
+			display: block;
+			position: relative;
+			aspect-ratio: 16 / 9;
+			overflow: hidden;
+		}
+
+		/* Undo the desktop offsets set through each project's imageClass.
+		   The crop and object-position must match scripts/extract-image-edges.mjs. */
+		.portfolio__card-media img {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			min-width: 0;
+			max-width: none;
+			padding: 0;
+			border-radius: 0;
+			object-fit: cover;
+			object-position: top;
+		}
+
+		.portfolio__card-fade {
+			display: block;
+			position: absolute;
+			inset: 0;
+			background: var(--card-fade);
+		}
+
 		.portfolio__card-caption {
-			width: 90%;
+			visibility: visible;
+			opacity: 1;
+			position: static;
+			transform: none;
+			height: auto;
+			width: 100%;
+			align-items: stretch;
+			row-gap: 12px;
+			padding: 4px 16px 20px;
+			border-radius: 0;
+			backdrop-filter: none;
+			background-color: transparent;
+			color: var(--card-text);
+			text-align: left;
+		}
+
+		.portfolio__card-title {
+			order: 1;
+			font-size: 1.25rem;
+			font-weight: 700;
+			line-height: 1;
+			color: var(--card-title);
+		}
+
+		.portfolio__card-tags {
+			order: 2;
+			justify-content: flex-start;
+		}
+
+		.portfolio__card-description {
+			order: 3;
+			font-weight: 400;
+			line-height: 1.5;
+		}
+
+		.portfolio__links-container {
+			order: 4;
+			margin-top: 4px;
 		}
 	}
 </style>

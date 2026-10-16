@@ -7,7 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "devhost": "astro dev --host"
+    "devhost": "astro dev --host",
+    "edges": "node scripts/extract-image-edges.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.1",
