@@ -1,10 +1,10 @@
 import type { ImageMetadata } from "astro";
 
-import abstrakctImg from "../assets/abstrakct_screenshot.webp";
-import coffetopiaImg from "../assets/coffetopia_screenshot.webp";
-import portfolioImg from "../assets/portfolio-screenshot-modified.webp";
-import sartorialImg from "../assets/sartorial_store_screenshot.webp";
-import expensitrackImg from "../assets/expensitrack_screenshot.webp";
+import abstrakctImg from "../assets/abstrakct-screenshot.webp";
+import coffetopiaImg from "../assets/coffeetopia-screenshot.webp";
+import blogImg from "../assets/blog-screenshot.webp";
+import sartorialImg from "../assets/sartorial-store-screenshot.webp";
+import expensitrackImg from "../assets/expensitrack-screenshot.webp";
 import conviertloImg from "../assets/conviertlo-screenshot.webp";
 import jobtrackrImg from "../assets/jobtrackr-hero-page.webp";
 import satyaLikeImg from "../assets/satya-nadella-like-screenshot.webp";
@@ -93,7 +93,7 @@ export const projectsConfig: ProjectConfig[] = [
 	{
 		key: "expensitrack",
 		image: expensitrackImg,
-		edgeColor: imageEdges["expensitrack_screenshot.webp"],
+		edgeColor: imageEdges["expensitrack-screenshot.webp"],
 		imageClass: `${bigImg} min-w-[725px]`,
 		tagsClass: "max-[1500px]:max-h-[80px] overflow-scroll max-[1150px]:max-h-none max-[1150px]:overflow-visible",
 		tags: [
@@ -115,7 +115,7 @@ export const projectsConfig: ProjectConfig[] = [
 	{
 		key: "abstrakct",
 		image: abstrakctImg,
-		edgeColor: imageEdges["abstrakct_screenshot.webp"],
+		edgeColor: imageEdges["abstrakct-screenshot.webp"],
 		imageClass: `${bigImg} min-w-[600px]`,
 		tags: [
 			{ name: "Liquid", color: "bg-cyan-400/80 border-cyan-700 hover:bg-cyan-700" },
@@ -132,7 +132,7 @@ export const projectsConfig: ProjectConfig[] = [
 	{
 		key: "coffetopia",
 		image: coffetopiaImg,
-		edgeColor: imageEdges["coffetopia_screenshot.webp"],
+		edgeColor: imageEdges["coffeetopia-screenshot.webp"],
 		imageClass: `${smallImg} left-[2%] min-w-[750px]`,
 		tags: [
 			{ name: "Liquid", color: "bg-cyan-400/80 border-cyan-700 hover:bg-cyan-700" },
@@ -147,8 +147,8 @@ export const projectsConfig: ProjectConfig[] = [
 	},
 	{
 		key: "blog",
-		image: portfolioImg,
-		edgeColor: imageEdges["portfolio-screenshot-modified.webp"],
+		image: blogImg,
+		edgeColor: imageEdges["blog-screenshot.webp"],
 		// Desktop offset differs from the other small cards.
 		imageClass:
 			"portfolio__small-card-img relative top-[3vh] left-[10%] min-w-[550px] rounded-[5px]",
@@ -163,7 +163,7 @@ export const projectsConfig: ProjectConfig[] = [
 	{
 		key: "sartorial",
 		image: sartorialImg,
-		edgeColor: imageEdges["sartorial_store_screenshot.webp"],
+		edgeColor: imageEdges["sartorial-store-screenshot.webp"],
 		imageClass: `${bigImg} min-w-[600px]`,
 		tags: [
 			{ name: "Liquid", color: "bg-cyan-400/80 border-cyan-700 hover:bg-cyan-700" },
