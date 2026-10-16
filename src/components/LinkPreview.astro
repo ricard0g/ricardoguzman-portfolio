@@ -1,0 +1,169 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+/**
+ * Inline link that reveals a small dark preview card right below it on hover
+ * or keyboard focus. The card can hold an image, a caption, or both.
+ * Pass `href` for a regular link (with `external` to open it in a new tab),
+ * or `dialog` with the id of a <dialog> to open it on click instead. With
+ * neither, the trigger simply toggles the card, so it also works on touch.
+ */
+interface Props {
+	href?: string;
+	external?: boolean;
+	dialog?: string;
+	image?: ImageMetadata;
+	/** Display width of the preview image in pixels; wider suits landscape shots. */
+	imageWidth?: number;
+	caption?: string;
+}
+
+const { href, external = false, dialog, image, imageWidth = 140, caption } =
+	Astro.props;
+const hasCard = Boolean(image || caption);
+// Without a link or dialog the card is the content itself, so tapping toggles it
+const isToggle = !href && !dialog;
+const cardId = `preview-${Math.random().toString(36).slice(2, 8)}`;
+// Image cards hug the image; text-only cards get a comfortable reading width
+const maxWidth = image ? `${imageWidth + 12}px` : "240px";
+---
+
+<span class="preview">{
+	href ? (
+		<a
+			class="preview__trigger dotted-link"
+			href={href}
+			target={external ? "_blank" : undefined}
+			rel={external ? "noopener" : undefined}
+		><slot /></a>
+	) : (
+		<button
+			type="button"
+			class="preview__trigger dotted-link"
+			data-dialog-open={dialog}
+			aria-haspopup={dialog ? "dialog" : undefined}
+			data-preview-toggle={isToggle ? "" : undefined}
+			aria-expanded={isToggle ? "false" : undefined}
+			aria-controls={isToggle ? cardId : undefined}
+		><slot /></button>
+	)
+}{
+	hasCard && (
+		<span
+			id={cardId}
+			class="preview__card"
+			style={`--preview-image-width: ${imageWidth}px; --preview-max-width: ${maxWidth}`}
+			aria-hidden={isToggle ? undefined : "true"}
+		>
+			{image && (
+				<Image
+					class="preview__image"
+					src={image}
+					width={imageWidth * 2}
+					alt=""
+					loading="eager"
+					fetchpriority="low"
+				/>
+			)}
+			{caption && <span class="preview__caption">{caption}</span>}
+		</span>
+	)
+}</span>
+
+<script>
+	// Tap-to-toggle for previews that aren't links, since touch screens can't hover
+	const close = (except?: Element) => {
+		document
+			.querySelectorAll<HTMLElement>('[data-preview-toggle][aria-expanded="true"]')
+			.forEach((t) => t !== except && t.setAttribute("aria-expanded", "false"));
+	};
+
+	document.addEventListener("click", (event) => {
+		const trigger = (event.target as HTMLElement).closest<HTMLElement>("[data-preview-toggle]");
+		close(trigger ?? undefined);
+		if (trigger) {
+			const open = trigger.getAttribute("aria-expanded") === "true";
+			trigger.setAttribute("aria-expanded", String(!open));
+		}
+	});
+
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape") close();
+	});
+</script>
+
+<style>
+	.preview {
+		--preview-radius: 12px;
+		--preview-duration: 130ms;
+		position: relative;
+		display: inline-block;
+	}
+
+	.preview__trigger {
+		padding: 0;
+		background: none;
+		border: none;
+		color: inherit;
+		font: inherit;
+		letter-spacing: inherit;
+		cursor: pointer;
+	}
+
+	.preview__card {
+		position: absolute;
+		top: calc(100% + 8px);
+		left: 50%;
+		z-index: 20;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		width: max-content;
+		max-width: var(--preview-max-width);
+		padding: 6px;
+		background-color: var(--color-accent);
+		color: var(--color-text-dark-bg);
+		border-radius: var(--preview-radius);
+		translate: -50% 0;
+		pointer-events: none;
+		/* Revealed top-down so the card reads as growing in height */
+		clip-path: inset(0 0 100% 0 round var(--preview-radius));
+		opacity: 0;
+		transition:
+			clip-path var(--preview-duration) ease-out,
+			opacity var(--preview-duration) ease-out;
+	}
+
+	@media (hover: hover) {
+		.preview:hover .preview__card {
+			clip-path: inset(0 round var(--preview-radius));
+			opacity: 1;
+		}
+	}
+
+	.preview:has(.preview__trigger:focus-visible) .preview__card,
+	.preview:has(.preview__trigger[aria-expanded="true"]) .preview__card {
+		clip-path: inset(0 round var(--preview-radius));
+		opacity: 1;
+	}
+
+	.preview__image {
+		display: block;
+		width: var(--preview-image-width);
+		height: auto;
+		border-radius: calc(var(--preview-radius) - 6px);
+	}
+
+	.preview__caption {
+		padding: 2px 4px 4px;
+		font-size: 13px;
+		line-height: 1.35;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.preview__card {
+			transition: none !important;
+		}
+	}
+</style>

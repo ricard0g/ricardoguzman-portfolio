@@ -25,10 +25,10 @@ const { badge, heading, headingAccent, buttons, projects } = Astro.props;
 
 <section
 	id="portfolio-section"
-	class="portfolio__container flex justify-center items-center w-full h-auto mt-[10vh] scroll-mt-10 py-[5vh] px-0"
+	class="portfolio__container flex justify-center items-center w-full h-auto scroll-mt-10 pt-section px-0"
 >
 	<div
-		class="portfolio__wrapper flex flex-col justify-center items-center gap-y-[1.5vh] w-[60%] max-[1250px]:w-[60%] max-[640px]:w-[95%] h-auto text-center"
+		class="portfolio__wrapper flex flex-col justify-center items-center gap-y-[1.5vh] w-[40%] max-[1250px]:w-[60%] max-[768px]:w-[80%] max-[425px]:w-[90%] h-auto text-center"
 	>
 		<span class="badge">{badge}</span>
 		<h2 class="section-heading">
@@ -56,8 +56,9 @@ const { badge, heading, headingAccent, buttons, projects } = Astro.props;
 <style>
 	.portfolio__grid-container {
 		display: grid;
-		grid-template: repeat(3, 42vh) / repeat(3, minmax(33%, 1fr));
+		grid-template: repeat(4, clamp(240px, 32vh, 400px)) / repeat(3, minmax(0, 1fr));
 		grid-template-areas:
+			"jobtrackr jobtrackr jobtrackr"
 			"expensitrack conviertlo conviertlo"
 			"abstrakct abstrakct coffetopia"
 			"blog sartorial sartorial";
@@ -66,8 +67,9 @@ const { badge, heading, headingAccent, buttons, projects } = Astro.props;
 	@media only screen and (max-width: 1150px) {
 		.portfolio__grid-container {
 			display: grid;
-			grid-template: repeat(6, auto) / repeat(1, 100%);
+			grid-template: repeat(7, auto) / repeat(1, 100%);
 			grid-template-areas:
+				"jobtrackr"
 				"conviertlo"
 				"expensitrack"
 				"abstrakct"

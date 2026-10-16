@@ -29,7 +29,7 @@ async function edgeColor(file) {
 	return `#${channels.slice(0, 3).map((c) => toHex(c.mean)).join("")}`;
 }
 
-const files = (await readdir(ASSETS_DIR)).filter((f) => /screenshot.*\.(webp|png|jpe?g|avif)$/i.test(f)).sort();
+const files = (await readdir(ASSETS_DIR)).filter((f) => /(screenshot|hero-page).*\.(webp|png|jpe?g|avif)$/i.test(f)).sort();
 const edges = {};
 for (const f of files) edges[f] = await edgeColor(path.join(ASSETS_DIR, f));
 
