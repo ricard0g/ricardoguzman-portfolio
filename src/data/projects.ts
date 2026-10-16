@@ -6,8 +6,10 @@ import portfolioImg from "../assets/portfolio-screenshot-modified.webp";
 import sartorialImg from "../assets/sartorial_store_screenshot.webp";
 import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 import conviertloImg from "../assets/conviertlo-screenshot.webp";
+import jobtrackrImg from "../assets/jobtrackr-hero-page.webp";
 
 export type ProjectKey =
+	| "jobtrackr"
 	| "conviertlo"
 	| "expensitrack"
 	| "abstrakct"
@@ -41,6 +43,27 @@ const smallImg =
 
 // Order matters only for DOM order; placement is defined by the grid areas in Portfolio.astro.
 export const projectsConfig: ProjectConfig[] = [
+	{
+		key: "jobtrackr",
+		image: jobtrackrImg,
+		// The screenshot has a white background, so a border and shadow keep it from blending into the card
+		imageClass: `${bigImg} min-w-[800px] rounded-md border border-zinc-200 shadow-m`,
+		tags: [
+			{ name: "Java", color: "bg-orange-700/80 border-orange-800 hover:bg-orange-800" },
+			{ name: "Spring Boot", color: "bg-green-600/80 border-green-700 hover:bg-green-700" },
+			{ name: "TypeScript", color: "bg-blue-800/80 border-blue-900 hover:bg-blue-900" },
+			{ name: "React", color: "bg-sky-600/80 border-sky-700 hover:bg-sky-700" },
+			{ name: "Python", color: "bg-blue-600/80 border-blue-700 hover:bg-blue-700" },
+			{ name: "FastAPI", color: "bg-teal-600/80 border-teal-700 hover:bg-teal-700" },
+			{ name: "LangGraph", color: "bg-purple-700/80 border-purple-800 hover:bg-purple-800" },
+			{ name: "PostgreSQL", color: "bg-indigo-700/80 border-indigo-800 hover:bg-indigo-800" },
+			{ name: "Docker", color: "bg-sky-700/80 border-sky-800 hover:bg-sky-800" },
+		],
+		links: {
+			visit: "https://jobtrakcr.com",
+			github: "https://github.com/ricard0g/jobtrackr",
+		},
+	},
 	{
 		key: "conviertlo",
 		image: conviertloImg,

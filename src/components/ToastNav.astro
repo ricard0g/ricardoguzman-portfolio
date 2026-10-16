@@ -1,0 +1,321 @@
+---
+interface Props {
+	labels: {
+		index: string;
+		intro: string;
+		about: string;
+		portfolio: string;
+		contact: string;
+		language: string;
+	};
+}
+
+const { labels } = Astro.props;
+
+const currentLang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
+
+const sections = [
+	{ id: "hero-section", label: labels.intro },
+	{ id: "portfolio-section", label: labels.portfolio },
+	{ id: "contact-section", label: labels.contact },
+];
+---
+
+<!--
+	Small-screen navigation: a toast pinned to the bottom that slides up once
+	the visitor starts scrolling. The pill shows the current section and opens
+	a menu of all sections above it.
+-->
+<nav class="toast-nav" aria-label={labels.index} inert>
+	<div class="toast-nav__menu" id="toast-nav-menu" data-open="false">
+		<ul>
+			{
+				sections.map(({ id, label }) => (
+					<li>
+						<a class="toast-nav__item" href={`#${id}`} data-section={id}>
+							{label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+		<div class="toast-nav__lang" role="group" aria-label={labels.language}>
+			<a
+				href="/"
+				lang="es"
+				aria-current={currentLang === "es" ? "page" : undefined}
+			>ES</a>
+			<span aria-hidden="true">/</span>
+			<a
+				href="/en"
+				lang="en"
+				aria-current={currentLang === "en" ? "page" : undefined}
+			>EN</a>
+		</div>
+	</div>
+
+	<button
+		type="button"
+		class="toast-nav__toggle"
+		aria-expanded="false"
+		aria-controls="toast-nav-menu"
+	>
+		<span class="toast-nav__current">{labels.intro}</span>
+		<svg viewBox="0 0 24 24" aria-hidden="true">
+			<path d="m18 15-6-6-6 6"></path>
+		</svg>
+	</button>
+
+	<button
+		type="button"
+		class="toast-nav__about"
+		data-dialog-open="about-dialog"
+		aria-haspopup="dialog"
+	>
+		{labels.about}
+	</button>
+</nav>
+
+<script>
+	import { NAV_SHOW_AFTER, onScrolledPast, watchSections } from "../scripts/scrollState";
+
+	const nav = document.querySelector<HTMLElement>(".toast-nav");
+	const menu = nav?.querySelector<HTMLElement>(".toast-nav__menu");
+	const toggle = nav?.querySelector<HTMLButtonElement>(".toast-nav__toggle");
+	const current = nav?.querySelector<HTMLElement>(".toast-nav__current");
+	const items = nav
+		? Array.from(nav.querySelectorAll<HTMLAnchorElement>("[data-section]"))
+		: [];
+
+	if (nav && menu && toggle && current) {
+		const setOpen = (open: boolean) => {
+			menu.dataset.open = String(open);
+			toggle.setAttribute("aria-expanded", String(open));
+		};
+
+		toggle.addEventListener("click", () => {
+			setOpen(menu.dataset.open !== "true");
+		});
+
+		// Picking a section closes the menu; the smooth scroll takes it from there
+		for (const item of items) item.addEventListener("click", () => setOpen(false));
+
+		document.addEventListener("click", (event) => {
+			if (!nav.contains(event.target as Node)) setOpen(false);
+		});
+
+		document.addEventListener("keydown", (event) => {
+			if (event.key === "Escape" && menu.dataset.open === "true") {
+				setOpen(false);
+				toggle.focus();
+			}
+		});
+
+		onScrolledPast(NAV_SHOW_AFTER, (visible) => {
+			nav.classList.toggle("is-visible", visible);
+			nav.inert = !visible;
+			// Let other fixed elements (like the blog button) make room
+			document.documentElement.classList.toggle("toast-nav-visible", visible);
+			if (!visible) setOpen(false);
+		});
+
+		watchSections(
+			items.map((item) => item.dataset.section ?? ""),
+			(id) => {
+				const active = items.find((item) => item.dataset.section === id);
+				if (!active) return;
+				items.forEach((item) => {
+					if (item === active) item.setAttribute("aria-current", "location");
+					else item.removeAttribute("aria-current");
+				});
+				current.textContent = active.textContent?.trim() ?? "";
+			},
+		);
+	}
+</script>
+
+<style>
+	.toast-nav {
+		--toast-radius: 16px;
+		--toast-border: color-mix(in srgb, var(--color-accent) 10%, transparent);
+		--toast-shadow: 0 8px 24px rgb(16 20 24 / 0.08), 0 1px 3px rgb(16 20 24 / 0.06);
+		--muted: color-mix(in srgb, var(--color-text-main) 60%, transparent);
+		position: fixed;
+		left: 16px;
+		right: 16px;
+		bottom: calc(16px + env(safe-area-inset-bottom));
+		z-index: 10;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 8px;
+		max-width: 480px;
+		margin-inline: auto;
+		padding: 8px;
+		background-color: white;
+		border: 1px solid var(--toast-border);
+		border-radius: var(--toast-radius);
+		box-shadow: var(--toast-shadow);
+		opacity: 0;
+		translate: 0 calc(100% + 24px);
+		transition:
+			opacity 250ms ease-out,
+			translate 250ms ease-out;
+	}
+
+	.toast-nav.is-visible {
+		opacity: 1;
+		translate: 0 0;
+	}
+
+	/* The side nav takes over where there's room beside the content */
+	@media (min-width: 1024px) {
+		.toast-nav {
+			display: none;
+		}
+	}
+
+	.toast-nav__toggle {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 10px 14px;
+		background-color: color-mix(in srgb, var(--color-accent) 5%, transparent);
+		border: none;
+		border-radius: 10px;
+		font: inherit;
+		font-size: 15px;
+		color: var(--color-accent);
+		cursor: pointer;
+	}
+
+	.toast-nav__toggle svg {
+		width: 16px;
+		height: 16px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		transition: rotate 150ms ease-out;
+	}
+
+	.toast-nav__toggle[aria-expanded="true"] svg {
+		rotate: 180deg;
+	}
+
+	.toast-nav__about {
+		padding: 10px 14px;
+		background: none;
+		border: none;
+		font: inherit;
+		font-size: 15px;
+		color: var(--color-accent);
+		cursor: pointer;
+	}
+
+	.toast-nav__toggle:focus-visible,
+	.toast-nav__about:focus-visible,
+	.toast-nav__item:focus-visible {
+		outline: 1px dotted var(--color-accent);
+		outline-offset: 2px;
+	}
+
+	.toast-nav__menu {
+		position: absolute;
+		left: 8px;
+		bottom: calc(100% + 8px);
+		min-width: 220px;
+		padding: 8px;
+		background-color: white;
+		border: 1px solid var(--toast-border);
+		border-radius: 14px;
+		box-shadow: var(--toast-shadow);
+		/* Grows upward from the toggle, mirroring the link previews */
+		clip-path: inset(100% 0 0 0 round 14px);
+		opacity: 0;
+		pointer-events: none;
+		transition:
+			clip-path 150ms ease-out,
+			opacity 150ms ease-out;
+	}
+
+	.toast-nav__menu[data-open="true"] {
+		clip-path: inset(0 round 14px);
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	.toast-nav__menu ul {
+		list-style: none;
+	}
+
+	.toast-nav__item {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		padding: 10px 12px;
+		font-size: 15px;
+		color: var(--muted);
+		border-radius: 8px;
+		transition: color 150ms linear;
+	}
+
+	.toast-nav__item::before {
+		content: "";
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background-color: transparent;
+	}
+
+	.toast-nav__item[aria-current] {
+		color: var(--color-accent);
+	}
+
+	.toast-nav__item[aria-current]::before {
+		background-color: var(--color-accent);
+	}
+
+	.toast-nav__lang {
+		display: flex;
+		gap: 6px;
+		margin-top: 4px;
+		padding: 10px 12px 6px 25px;
+		border-top: 1px solid var(--toast-border);
+		font-size: 12px;
+		letter-spacing: 0.05em;
+		color: color-mix(in srgb, var(--color-text-main) 40%, transparent);
+	}
+
+	.toast-nav__lang a {
+		color: var(--muted);
+	}
+
+	.toast-nav__lang a[aria-current] {
+		color: var(--color-accent);
+	}
+
+	/* Lift the floating blog button above the toast while it's showing */
+	@media (max-width: 1023px) {
+		:global(#floating-blog-link) {
+			transition: translate 250ms ease-out;
+		}
+
+		:global(html.toast-nav-visible #floating-blog-link) {
+			translate: 0 -76px;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.toast-nav,
+		.toast-nav__menu,
+		.toast-nav__toggle svg {
+			transition: none;
+		}
+
+		:global(#floating-blog-link) {
+			transition: none;
+		}
+	}
+</style>

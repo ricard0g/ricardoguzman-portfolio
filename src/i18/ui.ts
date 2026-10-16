@@ -4,33 +4,49 @@ export const translations = {
             description: "",
         },
         header: {
-            aboutLink: {
-                text: "Sobre Mi",
-            },
-            portfolioLink: {
-                text: "Portfolio",
-            },
-            contactLink: {
-                text: "Contacto",
-            },
             blogLink: {
                 title: "Visitar Blog",
                 ariaLabel: "Visitar el Blog de Ricardo",
             },
         },
+        nav: {
+            index: "Índice",
+            intro: "Intro",
+            about: "Sobre mí",
+            portfolio: "Portfolio",
+            contact: "Contacto",
+            language: "Idioma",
+        },
         hero: {
-            subheading: "Desarrollador Web",
-            description:
-                "Transformo diseños en experiencias digitales a través del código.",
+            heading: "Transformo diseños en experiencias digitales a través del código",
+            bio: {
+                intro: "Soy ",
+                name: "Ricardo Guzman",
+                middle: " - un desarrollador web Full Stack que construye Test Suites como QA de día y ",
+                project: "JobTrackr",
+                outro: " de noche.",
+            },
+            visitor: {
+                greeting: "¡Hola desde {country} {flag}!",
+                factIntro: "Aquí tienes un ",
+                factLink: "Dato Curioso",
+                factOutro: " sobre tu país.",
+            },
+            controls: {
+                colors: "Colores",
+                colorsLabel: "Cambiar el color de la animación",
+                channel: "Canal",
+                channelLabel: "Cambiar de animación",
+            },
         },
         about: {
-            badge: "Sobre Mí",
             heading: "Que Me",
             headingAccent: "Gusta?",
             image: {
                 alt: "Ricardo Guzman sentado en una silla sonriendo",
                 title: "Soy Yo! Ricardo Guzman",
             },
+            closeLabel: "Cerrar",
             p1: "Hola 👋",
             p2: "Me gusta mucho aprender 🧠 y leer de tecnología, pero lo que más disfruto es sentarme a crear y ver cómo una idea se convierte en algo real.",
             p3: "La mayoría del día me pilla delante del ordenador: investigando, probando cosas y programando variedad de cosas.",
@@ -47,6 +63,12 @@ export const translations = {
                 github: "GitHub",
             },
             projects: {
+                jobtrackr: {
+                    title: "JobTrackr",
+                    description:
+                        "Organiza tu búsqueda de empleo en un tablero Kanban y genera con IA CVs optimizados para ATS, adaptados a cada oferta.",
+                    imageAlt: "Página de inicio de JobTrackr",
+                },
                 conviertlo: {
                     title: "Conviertlo TUI",
                     description: "TUI para convertir y comprimir archivos multimedia usando lenguaje natural. Impulsado por FFMPEG y GitHub Copilot SDK para traducir peticiones como 'comprimir a 25MB' en comandos precisos. Lo lancé en X y Satya Nadella, CEO de Microsoft, le dio like al post.",
@@ -55,7 +77,7 @@ export const translations = {
                 expensitrack: {
                     title: "Expensitrack",
                     description:
-                        "App fullstack de gestión de gastos con gráficas para un usuario ficticio. Incluye registros CRUD y seguridad implementada vía impementacion de un Proxy Server.",
+                        "Gestor de gastos fullstack con gráficas, registros CRUD y un Proxy Server para la seguridad.",
                     imageAlt: "Proyecto Expensitrack pantalla inicial",
                 },
                 abstrakct: {
@@ -106,33 +128,49 @@ export const translations = {
     },
     en: {
         header: {
-            aboutLink: {
-                text: "About Me",
-            },
-            portfolioLink: {
-                text: "Portfolio",
-            },
-            contactLink: {
-                text: "Contact",
-            },
             blogLink: {
                 title: "Visit Blog",
                 ariaLabel: "Visit Ricardo's Blog",
             },
         },
+        nav: {
+            index: "Index",
+            intro: "Intro",
+            about: "About me",
+            portfolio: "Portfolio",
+            contact: "Contact",
+            language: "Language",
+        },
         hero: {
-            subheading: "Web Developer",
-            description:
-                "Transforming design into Digital Experiences through code.",
+            heading: "Transforming design into digital experiences through code",
+            bio: {
+                intro: "I’m ",
+                name: "Ricardo Guzman",
+                middle: " - a Full Stack Web developer that’s building Test Suites as a QA during the day and building ",
+                project: "JobTrackr",
+                outro: " at night.",
+            },
+            visitor: {
+                greeting: "Hi from {country} {flag}!",
+                factIntro: "Here's a ",
+                factLink: "Fun Fact",
+                factOutro: " about your country.",
+            },
+            controls: {
+                colors: "Colors",
+                colorsLabel: "Change the animation color",
+                channel: "Channel",
+                channelLabel: "Change the animation",
+            },
         },
         about: {
-            badge: "About Me",
             heading: "What do I",
             headingAccent: "Enjoy?",
             image: {
                 alt: "Ricardo Guzman sitting on a chair smiling",
                 title: "That's me! Ricardo Guzman",
             },
+            closeLabel: "Close",
             p1: "Hello 👋",
             p2: "I really enjoy learning 🧠 and reading about technology, but what I enjoy most is sitting down to create and seeing how an idea becomes something real.",
             p3: "Most of the day you'll find me in front of the computer: researching, testing things out, and programming a variety of projects.",
@@ -149,6 +187,12 @@ export const translations = {
                 github: "GitHub",
             },
             projects: {
+                jobtrackr: {
+                    title: "JobTrackr",
+                    description:
+                        "Organize your job search on a Kanban board and generate ATS-ready CVs with AI, tailored to each application.",
+                    imageAlt: "JobTrackr landing page",
+                },
                 conviertlo: {
                     title: "Conviertlo TUI",
                     description: "TUI for converting and compressing media files using natural language. Powered by FFMPEG and GitHub Copilot SDK to translate requests like 'compress to 25MB' into precise commands. I launched it on X and Satya Nadella, Microsoft's CEO, liked the post.",
@@ -157,7 +201,7 @@ export const translations = {
                 expensitrack: {
                     title: "Expensitrack",
                     description:
-                        "Full-stack expense management app with charts for a fictional user. Includes CRUD records and security implemented via Proxy Server.",
+                        "Full-stack expense tracker with charts, CRUD records and a Proxy Server for security.",
                     imageAlt: "Expensitrack project home screen",
                 },
                 abstrakct: {
