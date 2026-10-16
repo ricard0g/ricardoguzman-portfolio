@@ -2,11 +2,15 @@
 import type { ImageMetadata } from "astro";
 import type { ProjectKey, ProjectTag } from "../data/projects";
 import { cardPalette } from "../data/cardPalette";
+import LinkPreview from "./LinkPreview.astro";
 
 interface Props {
 	projectKey: ProjectKey;
 	title: string;
 	description: string;
+	/** Trailing sentence of the description that previews `highlightImage`. */
+	highlight?: string;
+	highlightImage?: ImageMetadata;
 	passwordNote?: string;
 	imageAlt: string;
 	image: ImageMetadata;
@@ -28,6 +32,8 @@ const {
 	projectKey,
 	title,
 	description,
+	highlight,
+	highlightImage,
 	passwordNote,
 	imageAlt,
 	image,
@@ -64,12 +70,26 @@ const linkClass =
 				class="portfolio__card-caption group-hover:visible group-hover:opacity-100"
 			>
 				<h2
-					class="portfolio__card-title text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-normal"
+					class="portfolio__card-title text-[1.5rem] max-[640px]:text-[1.25rem] font-display font-bold text-text-dark-bg-strong"
 				>
 					{title}
 				</h2>
-				<p class="portfolio__card-description text-[0.95rem] max-[640px]:text-[0.85rem] font-light">
+				<p class="portfolio__card-description text-[0.95rem] max-[640px]:text-[0.85rem] font-normal text-text-dark-bg">
 					{description}
+					{
+						highlight && highlightImage && (
+							<LinkPreview
+								href={highlightImage.src}
+								external
+								image={highlightImage}
+								imageWidth={220}
+								imageAspect="924 / 395"
+								imagePosition="center 34%"
+							>
+								{highlight}
+							</LinkPreview>
+						)
+					}
 					{passwordNote && <strong>{passwordNote}</strong>}
 				</p>
 				<div

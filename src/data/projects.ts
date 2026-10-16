@@ -7,6 +7,7 @@ import sartorialImg from "../assets/sartorial_store_screenshot.webp";
 import expensitrackImg from "../assets/expensitrack_screenshot.webp";
 import conviertloImg from "../assets/conviertlo-screenshot.webp";
 import jobtrackrImg from "../assets/jobtrackr-hero-page.webp";
+import satyaLikeImg from "../assets/satya-nadella-like-screenshot.webp";
 import imageEdges from "./image-edges.json";
 
 export type ProjectKey =
@@ -31,6 +32,8 @@ export interface ProjectConfig {
 	edgeColor: string;
 	imageClass: string;
 	tagsClass?: string;
+	/** Screenshot previewed by the description's `highlight` and opened on click. */
+	highlightImage?: ImageMetadata;
 	tags: ProjectTag[];
 	links: {
 		visit: string;
@@ -72,6 +75,7 @@ export const projectsConfig: ProjectConfig[] = [
 		image: conviertloImg,
 		edgeColor: imageEdges["conviertlo-screenshot.webp"],
 		imageClass: `${bigImg} min-w-[850px] rounded-md`,
+		highlightImage: satyaLikeImg,
 		tags: [
 			{ name: "Python", color: "bg-blue-600/80 border-blue-700 hover:bg-blue-700" },
 			{ name: "Textualize", color: "bg-pink-600/80 border-pink-700 hover:bg-pink-700" },

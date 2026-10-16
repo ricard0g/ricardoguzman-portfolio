@@ -16,6 +16,10 @@ interface Props {
 	image?: ImageMetadata;
 	/** Display width of the preview image in pixels; wider suits landscape shots. */
 	imageWidth?: number;
+	/** Crop the preview to this aspect ratio (e.g. "16 / 9"), for tall shots that wouldn't fit. */
+	imageAspect?: string;
+	/** Which part of a cropped image stays visible, as an object-position value. */
+	imagePosition?: string;
 	caption?: string;
 	/** Anchor the card to the trigger's left edge instead of centering it, for triggers near the screen edge. */
 	align?: "center" | "start";
@@ -27,6 +31,8 @@ const {
 	dialog,
 	image,
 	imageWidth = 140,
+	imageAspect = "auto",
+	imagePosition = "center",
 	caption,
 	align = "center",
 } = Astro.props;
@@ -62,7 +68,7 @@ const maxWidth = image ? `${imageWidth + 12}px` : "240px";
 		<span
 			id={cardId}
 			class:list={["preview__card", align === "start" && "preview__card--start"]}
-			style={`--preview-image-width: ${imageWidth}px; --preview-max-width: ${maxWidth}`}
+			style={`--preview-image-width: ${imageWidth}px; --preview-image-aspect: ${imageAspect}; --preview-image-position: ${imagePosition}; --preview-max-width: ${maxWidth}`}
 			aria-hidden={isToggle ? undefined : "true"}
 		>
 			{image && (
@@ -166,6 +172,9 @@ const maxWidth = image ? `${imageWidth + 12}px` : "240px";
 		display: block;
 		width: var(--preview-image-width);
 		height: auto;
+		aspect-ratio: var(--preview-image-aspect);
+		object-fit: cover;
+		object-position: var(--preview-image-position);
 		border-radius: calc(var(--preview-radius) - 6px);
 	}
 
