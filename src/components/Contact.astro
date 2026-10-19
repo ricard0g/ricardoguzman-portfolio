@@ -38,7 +38,7 @@ const {
 	class="contacto__container flex justify-center items-center w-full h-auto pt-section pb-[10vh] px-0"
 >
 	<div
-		class="contacto__wrapper flex flex-col justify-top items-center gap-y-[1.5vh] w-[40%] max-[1250px]:w-[60%] max-[768px]:w-[90%] text-center"
+		class="contacto__wrapper flex flex-col justify-top items-center gap-y-[1.5vh] w-[55%] max-[768px]:w-[90%] text-center"
 	>
 		<span class="badge">{badge}</span>
 		<h2 class="section-heading">
@@ -49,7 +49,7 @@ const {
 			action={actions.send}
 			method="POST"
 			enctype="application/x-www-form-urlencoded"
-			class="flex flex-col justify-center content-start gap-y-[2vh] w-[75%] max-[768px]:w-full h-full p-[5vh] bg-white rounded-main shadow-[inset_0_-4px_7px_#00000030,inset_0_4px_7px_#00000030]"
+			class="flex flex-col justify-center content-start gap-y-[2vh] w-full max-w-[600px] h-full p-[5vh] bg-white rounded-main shadow-[inset_0_-4px_7px_#00000030,inset_0_4px_7px_#00000030]"
 		>
 			{result?.error && (
 				<p
@@ -112,7 +112,7 @@ const {
 				<textarea
 					id="message"
 					name="message"
-					rows="5"
+					rows="8"
 					cols="35"
 					required
 					placeholder={messagePlaceholder}
